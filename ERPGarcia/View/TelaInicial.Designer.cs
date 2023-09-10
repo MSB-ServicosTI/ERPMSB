@@ -58,13 +58,14 @@
             // ButtonLogin
             // 
             ButtonLogin.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            ButtonLogin.Location = new Point(185, 229);
+            ButtonLogin.Location = new Point(190, 229);
             ButtonLogin.MaximumSize = new Size(0, 23);
             ButtonLogin.Name = "ButtonLogin";
             ButtonLogin.Size = new Size(75, 23);
             ButtonLogin.TabIndex = 2;
             ButtonLogin.Text = "Login";
             ButtonLogin.UseVisualStyleBackColor = true;
+            ButtonLogin.Click += ButtonLogin_Click;
             // 
             // TelaInicial
             // 

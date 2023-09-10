@@ -48,11 +48,7 @@ namespace ERPAPI.Controller
 
                 var token = GetToken(authClaims);
 
-                return Ok(new
-                {
-                    token = new JwtSecurityTokenHandler().WriteToken(token),
-                    expiration = token.ValidTo
-                });
+                return Ok("Sucesso!");
             }
             return Unauthorized();
         }
