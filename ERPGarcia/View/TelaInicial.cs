@@ -1,6 +1,8 @@
+using ERPGarcia.Model;
+
 namespace ERPGarcia
 {
-    public partial class TelaInicial : Form
+    public partial class TelaInicial : CustomForm
     {
         public TelaInicial()
         {
