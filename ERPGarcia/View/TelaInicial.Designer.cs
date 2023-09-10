@@ -28,17 +28,54 @@
         /// </summary>
         private void InitializeComponent()
         {
+            TxtBLogin = new TextBox();
+            TxtBSenha = new TextBox();
+            ButtonLogin = new Button();
             SuspendLayout();
+            // 
+            // TxtBLogin
+            // 
+            TxtBLogin.Location = new Point(52, 107);
+            TxtBLogin.Name = "TxtBLogin";
+            TxtBLogin.PlaceholderText = "Insira seu Login aqui";
+            TxtBLogin.Size = new Size(358, 23);
+            TxtBLogin.TabIndex = 0;
+            // 
+            // TxtBSenha
+            // 
+            TxtBSenha.Location = new Point(52, 163);
+            TxtBSenha.Name = "TxtBSenha";
+            TxtBSenha.PasswordChar = '*';
+            TxtBSenha.PlaceholderText = "Insira sua Senha aqui";
+            TxtBSenha.Size = new Size(358, 23);
+            TxtBSenha.TabIndex = 1;
+            // 
+            // ButtonLogin
+            // 
+            ButtonLogin.Location = new Point(185, 229);
+            ButtonLogin.Name = "ButtonLogin";
+            ButtonLogin.Size = new Size(75, 23);
+            ButtonLogin.TabIndex = 2;
+            ButtonLogin.Text = "Login";
+            ButtonLogin.UseVisualStyleBackColor = true;
             // 
             // TelaInicial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(468, 366);
+            Controls.Add(ButtonLogin);
+            Controls.Add(TxtBSenha);
+            Controls.Add(TxtBLogin);
             Name = "TelaInicial";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private TextBox TxtBLogin;
+        private TextBox TxtBSenha;
+        private Button ButtonLogin;
     }
 }
