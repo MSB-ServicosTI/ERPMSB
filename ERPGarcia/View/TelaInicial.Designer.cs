@@ -35,6 +35,7 @@
             // 
             // TxtBLogin
             // 
+            TxtBLogin.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             TxtBLogin.Location = new Point(52, 107);
             TxtBLogin.Name = "TxtBLogin";
             TxtBLogin.PlaceholderText = "Insira seu Login aqui";
@@ -43,6 +44,7 @@
             // 
             // TxtBSenha
             // 
+            TxtBSenha.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             TxtBSenha.Location = new Point(52, 163);
             TxtBSenha.Name = "TxtBSenha";
             TxtBSenha.PasswordChar = '*';
@@ -52,7 +54,9 @@
             // 
             // ButtonLogin
             // 
+            ButtonLogin.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ButtonLogin.Location = new Point(185, 229);
+            ButtonLogin.MaximumSize = new Size(0, 23);
             ButtonLogin.Name = "ButtonLogin";
             ButtonLogin.Size = new Size(75, 23);
             ButtonLogin.TabIndex = 2;
@@ -67,6 +71,7 @@
             Controls.Add(ButtonLogin);
             Controls.Add(TxtBSenha);
             Controls.Add(TxtBLogin);
+            MinimumSize = new Size(484, 405);
             Name = "TelaInicial";
             ResumeLayout(false);
             PerformLayout();
