@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaInicial));
             TxtBLogin = new TextBox();
             TxtBSenha = new TextBox();
             ButtonLogin = new Button();
@@ -73,6 +74,7 @@
             Controls.Add(ButtonLogin);
             Controls.Add(TxtBSenha);
             Controls.Add(TxtBLogin);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(484, 405);
             Name = "TelaInicial";
             ResumeLayout(false);
