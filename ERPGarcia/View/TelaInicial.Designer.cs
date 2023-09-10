@@ -41,6 +41,7 @@
             TxtBLogin.PlaceholderText = "Insira seu Login aqui";
             TxtBLogin.Size = new Size(358, 23);
             TxtBLogin.TabIndex = 0;
+            TxtBLogin.TabStop = false;
             // 
             // TxtBSenha
             // 
@@ -51,6 +52,7 @@
             TxtBSenha.PlaceholderText = "Insira sua Senha aqui";
             TxtBSenha.Size = new Size(358, 23);
             TxtBSenha.TabIndex = 1;
+            TxtBSenha.TabStop = false;
             // 
             // ButtonLogin
             // 
@@ -82,5 +84,6 @@
         private TextBox TxtBLogin;
         private TextBox TxtBSenha;
         private Button ButtonLogin;
+
     }
 }
