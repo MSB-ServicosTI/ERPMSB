@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaInicial));
             TxtBLogin = new TextBox();
             TxtBSenha = new TextBox();
             ButtonLogin = new Button();
@@ -41,6 +42,7 @@
             TxtBLogin.PlaceholderText = "Insira seu Login aqui";
             TxtBLogin.Size = new Size(358, 23);
             TxtBLogin.TabIndex = 0;
+            TxtBLogin.TabStop = false;
             // 
             // TxtBSenha
             // 
@@ -51,6 +53,7 @@
             TxtBSenha.PlaceholderText = "Insira sua Senha aqui";
             TxtBSenha.Size = new Size(358, 23);
             TxtBSenha.TabIndex = 1;
+            TxtBSenha.TabStop = false;
             // 
             // ButtonLogin
             // 
@@ -71,6 +74,7 @@
             Controls.Add(ButtonLogin);
             Controls.Add(TxtBSenha);
             Controls.Add(TxtBLogin);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(484, 405);
             Name = "TelaInicial";
             ResumeLayout(false);
@@ -82,5 +86,6 @@
         private TextBox TxtBLogin;
         private TextBox TxtBSenha;
         private Button ButtonLogin;
+
     }
 }
