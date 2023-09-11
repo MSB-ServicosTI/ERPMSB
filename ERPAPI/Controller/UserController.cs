@@ -53,6 +53,17 @@ namespace ERPAPI.Controller
             return Unauthorized();
         }
 
+        [HttpGet]
+        [Route("getUser/{id}")]
+        public async Task<IActionResult> GetUserById(int id)
+        {
+            var user = userManager.FindByIdAsync(id.ToString());
+            if (user != null)
+                return Ok();
+
+            return BadRequest();
+        }
+
         [HttpPost]
         [Route("register")]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
