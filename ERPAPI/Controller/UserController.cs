@@ -55,11 +55,11 @@ namespace ERPAPI.Controller
 
         [HttpGet]
         [Route("getUser/{id}")]
-        public async Task<IActionResult> GetUserById(int id)
+        public async Task<IActionResult> GetUserById(Guid id)
         {
-            var user = userManager.FindByIdAsync(id.ToString());
+            var user = await userManager.FindByIdAsync(id.ToString());
             if (user != null)
-                return Ok();
+                return Ok(user);
 
             return BadRequest();
         }
