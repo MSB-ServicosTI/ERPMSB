@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ERPAPI.Model;
+using Newtonsoft.Json.Linq;
 
 namespace ERPAPI.Controller
 {
@@ -11,12 +12,15 @@ namespace ERPAPI.Controller
     public class RoleController : ControllerBase
     {
         private readonly RoleManager<IdentityRole> roleManager;
+        private readonly UserManager<IdentityUser> userManager;
         private readonly IConfiguration configuration;
 
         public RoleController(RoleManager<IdentityRole> roleManager,
+                              UserManager<IdentityUser> userManager,
                               IConfiguration configuration)
         {
             this.roleManager = roleManager;
+            this.userManager = userManager;
             this.configuration = configuration;
         }
 
@@ -42,7 +46,7 @@ namespace ERPAPI.Controller
             };
 
             var result = await roleManager.CreateAsync(cRole);
-            
+
 
             if (result.Succeeded)
                 return Ok($"Atribuição {model.Name} criado com sucesso.");
@@ -66,6 +70,26 @@ namespace ERPAPI.Controller
                 return Ok($"Atribuição {role.Name} excluída com sucesso.");
 
             return BadRequest($"Erro: {result.Errors.FirstOrDefault()?.Description}");
+        }
+
+        [HttpPost]
+        [Route("addUserToRole")]
+        public async Task<IActionResult> AddUserToRole([FromBody] JObject model)
+        {
+            if (model["User"] == null || model["Role"] == null)
+                return BadRequest();
+
+
+            var role = await roleManager.FindByNameAsync(model["Role"].ToString());
+            var user = await userManager.FindByNameAsync(model["User"].ToString());
+
+            if (role != null && user != null)
+            {
+                var response = await userManager.AddToRoleAsync(user, role.Name);
+                if (response.Succeeded)
+                    return Ok($"Usuário {user.UserName} adicionado à atribuição {role.Name}");
+            }
+            return BadRequest($"Atribuição ou Usuário inválidos.");
         }
     }
 }
