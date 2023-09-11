@@ -1,4 +1,5 @@
 using ERPGarcia.Model;
+using ERPGarcia.View;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Text;
@@ -35,8 +36,8 @@ namespace ERPGarcia
             {
                 string data = await response.Content.ReadAsStringAsync();
                 this.Hide();
-                var form = new CustomForm();
-                form.Show();
+                var first = new Home();
+                first.Show();
             }
         }
     }
