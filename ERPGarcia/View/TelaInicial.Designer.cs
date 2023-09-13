@@ -32,7 +32,7 @@
             TxtBLogin = new TextBox();
             TxtBSenha = new TextBox();
             ButtonLogin = new Button();
-            CheckBox_ShowPass = new CheckBox();
+            CheckBoxShowPass = new CheckBox();
             SuspendLayout();
             // 
             // TxtBLogin
@@ -68,23 +68,23 @@
             ButtonLogin.UseVisualStyleBackColor = true;
             ButtonLogin.Click += ButtonLogin_Click;
             // 
-            // CheckBox_ShowPass
+            // CheckBoxShowPass
             // 
-            CheckBox_ShowPass.AutoSize = true;
-            CheckBox_ShowPass.Location = new Point(52, 192);
-            CheckBox_ShowPass.Name = "CheckBox_ShowPass";
-            CheckBox_ShowPass.Size = new Size(101, 19);
-            CheckBox_ShowPass.TabIndex = 3;
-            CheckBox_ShowPass.Text = "Mostrar senha";
-            CheckBox_ShowPass.UseVisualStyleBackColor = true;
-            CheckBox_ShowPass.CheckedChanged += CheckBox_ShowPass_CheckedChanged;
+            CheckBoxShowPass.AutoSize = true;
+            CheckBoxShowPass.Location = new Point(52, 192);
+            CheckBoxShowPass.Name = "CheckBoxShowPass";
+            CheckBoxShowPass.Size = new Size(101, 19);
+            CheckBoxShowPass.TabIndex = 3;
+            CheckBoxShowPass.Text = "Mostrar senha";
+            CheckBoxShowPass.UseVisualStyleBackColor = true;
+            CheckBoxShowPass.CheckedChanged += CheckBoxShowPass_CheckedChanged;
             // 
             // TelaInicial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(468, 366);
-            Controls.Add(CheckBox_ShowPass);
+            Controls.Add(CheckBoxShowPass);
             Controls.Add(ButtonLogin);
             Controls.Add(TxtBSenha);
             Controls.Add(TxtBLogin);
@@ -101,6 +101,6 @@
         private TextBox TxtBLogin;
         private TextBox TxtBSenha;
         private Button ButtonLogin;
-        private CheckBox CheckBox_ShowPass;
+        private CheckBox CheckBoxShowPass;
     }
 }
