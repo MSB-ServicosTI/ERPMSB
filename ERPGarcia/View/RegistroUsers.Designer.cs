@@ -151,6 +151,7 @@
             Controls.Add(cancelar);
             Controls.Add(cadastrar);
             Name = "RegistroUsers";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "RegistroUsers";
             ResumeLayout(false);
             PerformLayout();
