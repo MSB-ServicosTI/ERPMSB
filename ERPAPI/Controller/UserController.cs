@@ -31,26 +31,33 @@ namespace ERPAPI.Controller
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
             var user = await userManager.FindByNameAsync(model.Username);
-            if (user != null && await userManager.CheckPasswordAsync(user, model.Password))
-            {
-                var userRoles = await userManager.GetRolesAsync(user);
 
-                var authClaims = new List<Claim>
+            if (user == null)
+            {
+                return Unauthorized(new AuthenticationResponse { Status = AuthenticationStatus.UserNotFound, Message = "Usuário não encontrado no banco de dados." });
+            }
+
+            if (!await userManager.CheckPasswordAsync(user, model.Password))
+            {
+                return Unauthorized(new AuthenticationResponse { Status = AuthenticationStatus.InvalidPassword, Message = "Senha Incorreta." });
+            }
+
+            var userRoles = await userManager.GetRolesAsync(user);
+
+            var authClaims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, user.UserName),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
                 };
 
-                foreach (var userRole in userRoles)
-                {
-                    authClaims.Add(new Claim(ClaimTypes.Role, userRole));
-                }
-
-                var token = GetToken(authClaims);
-
-                return Ok("Sucesso!");
+            foreach (var userRole in userRoles)
+            {
+                authClaims.Add(new Claim(ClaimTypes.Role, userRole));
             }
-            return Unauthorized();
+
+            var token = GetToken(authClaims);
+
+            return Ok("Sucesso!");
         }
 
         [HttpGet]
@@ -70,7 +77,7 @@ namespace ERPAPI.Controller
         {
             var userExists = await userManager.FindByEmailAsync(model.EmailAddress);
             if (userExists != null)
-                return StatusCode(StatusCodes.Status500InternalServerError, new SignResponse { Status = "Erro", Message = "Um usuário com esse e-mail já existe." });
+                return StatusCode(StatusCodes.Status500InternalServerError, new AuthenticationResponse { Status = AuthenticationStatus.AlreadyExists, Message = "Um usuário com esse e-mail já existe." });
 
             IdentityUser user = new()
             {
@@ -81,9 +88,9 @@ namespace ERPAPI.Controller
 
             var result = await userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
-                return StatusCode(StatusCodes.Status500InternalServerError, new SignResponse { Status = "Erro", Message = $"Falha na criação da conta, cheque as informações e tente novamente mais informações: \"{result.Errors.FirstOrDefault().Description}\"" });
+                return StatusCode(StatusCodes.Status500InternalServerError, new AuthenticationResponse { Status = AuthenticationStatus.InternalServerError, Message = $"Falha na criação da conta, cheque as informações e tente novamente mais informações: \"{result.Errors.FirstOrDefault().Description}\"" });
 
-            return Ok(new SignResponse { Status = "Sucesso", Message = "Usuário criado com sucesso." });
+            return Ok(new AuthenticationResponse { Status = AuthenticationStatus.Success, Message = "Usuário criado com sucesso." });
         }
 
 
