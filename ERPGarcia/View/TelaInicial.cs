@@ -15,6 +15,9 @@ namespace ERPGarcia
 
         private async void ButtonLogin_Click(object sender, EventArgs e)
         {
+            if (!ValidarCamposLoginSenha())
+                return;
+
             var loginModel = new LoginModel()
             {
                 Username = TxtBLogin.Text,
@@ -39,6 +42,46 @@ namespace ERPGarcia
                 var first = new Home();
                 first.Show();
             }
+        }
+
+        private bool ValidarCamposLoginSenha()
+        {
+            if (TxtBLogin.Text.Length < 3)
+            {
+                MessageBox.Show("O Usuário deve ter mais de 3 dígitos.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TxtBLogin.Text = string.Empty;
+                return false;
+            }
+
+            if (TxtBSenha.Text.Length < 6)
+            {
+                MessageBox.Show("A senha deve conter mais de 6 dígitos.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TxtBSenha.Text = string.Empty;
+                return false;
+            }
+
+            if (!(TxtBSenha.Text.Any(a => char.IsDigit(a))))
+            {
+                MessageBox.Show("A senha deve conter pelo menos 1 dígito numeral", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TxtBSenha.Text = string.Empty;
+                return false;
+            }
+
+            if (!(TxtBSenha.Text.Any(a => char.IsUpper(a))))
+            {
+                MessageBox.Show("A senha deve conter pelo menos 1 letra maiúscula", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TxtBSenha.Text = string.Empty;
+                return false;
+            }
+
+            if (!(TxtBSenha.Text.Any(a => char.IsSymbol(a))) && !(TxtBSenha.Text.Any(a => char.IsPunctuation(a))))
+            {
+                MessageBox.Show("A senha deve conter pelo menos 1 caracter especial", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TxtBSenha.Text = string.Empty;
+                return false;
+            }
+
+            return true;
         }
     }
 }
