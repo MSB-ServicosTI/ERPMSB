@@ -55,6 +55,7 @@ namespace ERPGarcia.View
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "Home";
+            StartPosition = FormStartPosition.CenterScreen;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);

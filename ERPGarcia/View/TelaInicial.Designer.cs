@@ -78,6 +78,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(484, 405);
             Name = "TelaInicial";
+            StartPosition = FormStartPosition.CenterScreen;
             ResumeLayout(false);
             PerformLayout();
         }
