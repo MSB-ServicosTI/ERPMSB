@@ -90,5 +90,17 @@ namespace ERPGarcia
 
             return true;
         }
+
+        private void CheckBox_ShowPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CheckBox_ShowPass.Checked)
+            {
+                TxtBSenha.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                TxtBSenha.UseSystemPasswordChar = true;
+            }
+        }
     }
 }

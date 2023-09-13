@@ -32,6 +32,7 @@
             TxtBLogin = new TextBox();
             TxtBSenha = new TextBox();
             ButtonLogin = new Button();
+            CheckBox_ShowPass = new CheckBox();
             SuspendLayout();
             // 
             // TxtBLogin
@@ -49,11 +50,11 @@
             TxtBSenha.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             TxtBSenha.Location = new Point(52, 163);
             TxtBSenha.Name = "TxtBSenha";
-            TxtBSenha.PasswordChar = '*';
             TxtBSenha.PlaceholderText = "Insira sua Senha aqui";
             TxtBSenha.Size = new Size(358, 23);
             TxtBSenha.TabIndex = 1;
             TxtBSenha.TabStop = false;
+            TxtBSenha.UseSystemPasswordChar = true;
             // 
             // ButtonLogin
             // 
@@ -67,11 +68,23 @@
             ButtonLogin.UseVisualStyleBackColor = true;
             ButtonLogin.Click += ButtonLogin_Click;
             // 
+            // CheckBox_ShowPass
+            // 
+            CheckBox_ShowPass.AutoSize = true;
+            CheckBox_ShowPass.Location = new Point(52, 192);
+            CheckBox_ShowPass.Name = "CheckBox_ShowPass";
+            CheckBox_ShowPass.Size = new Size(101, 19);
+            CheckBox_ShowPass.TabIndex = 3;
+            CheckBox_ShowPass.Text = "Mostrar senha";
+            CheckBox_ShowPass.UseVisualStyleBackColor = true;
+            CheckBox_ShowPass.CheckedChanged += CheckBox_ShowPass_CheckedChanged;
+            // 
             // TelaInicial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(468, 366);
+            Controls.Add(CheckBox_ShowPass);
             Controls.Add(ButtonLogin);
             Controls.Add(TxtBSenha);
             Controls.Add(TxtBLogin);
@@ -88,6 +101,6 @@
         private TextBox TxtBLogin;
         private TextBox TxtBSenha;
         private Button ButtonLogin;
-
+        private CheckBox CheckBox_ShowPass;
     }
 }
