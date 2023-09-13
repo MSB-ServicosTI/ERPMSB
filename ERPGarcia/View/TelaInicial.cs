@@ -1,3 +1,4 @@
+using ERPAPI.Model;
 using ERPGarcia.Model;
 using ERPGarcia.View;
 using Newtonsoft.Json;
@@ -41,7 +42,13 @@ namespace ERPGarcia
                 this.Hide();
                 var first = new Home();
                 first.Show();
+
+                return;
             }
+
+            var responseContent = JsonConvert.DeserializeObject<AuthenticationResponse>(await response.Content.ReadAsStringAsync());
+
+            MessageBox.Show(responseContent.Message, "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private bool ValidarCamposLoginSenha()
