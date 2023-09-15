@@ -31,7 +31,7 @@ namespace ERPGarcia.View
             menuStrip1.Items.AddRange(new ToolStripItem[] { administraçãoToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(552, 24);
+            menuStrip1.Size = new Size(1264, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -51,7 +51,7 @@ namespace ERPGarcia.View
             // 
             // Home
             // 
-            ClientSize = new Size(552, 261);
+            ClientSize = new Size(1264, 661);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "Home";

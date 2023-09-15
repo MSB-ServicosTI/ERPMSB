@@ -15,6 +15,8 @@ namespace ERPGarcia.View
         public Loading()
         {
             InitializeComponent();
+            this.BackColor = Color.White; this.TransparencyKey = Color.White;
         }
+
     }
 }

@@ -35,7 +35,13 @@ namespace ERPGarcia
 
             StringContent content = new StringContent(JsonConvert.SerializeObject(loginModel), Encoding.UTF8, "application/json");
 
+            var windowLoading = new Loading();
+            windowLoading.Show();
+
             HttpResponseMessage response = await requestLogin.PostAsync("api/User/login", content);
+
+            windowLoading.Close();
+
             if (response.IsSuccessStatusCode)
             {
                 string data = await response.Content.ReadAsStringAsync();

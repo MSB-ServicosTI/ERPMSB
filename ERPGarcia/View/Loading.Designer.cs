@@ -35,10 +35,11 @@
             // 
             // loadingBox
             // 
+            loadingBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             loadingBox.Image = (Image)resources.GetObject("loadingBox.Image");
-            loadingBox.Location = new Point(-41, -57);
+            loadingBox.Location = new Point(574, 298);
             loadingBox.Name = "loadingBox";
-            loadingBox.Size = new Size(258, 232);
+            loadingBox.Size = new Size(75, 77);
             loadingBox.TabIndex = 0;
             loadingBox.TabStop = false;
             // 
@@ -46,9 +47,12 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(188, 144);
+            BackColor = Color.White;
+            ClientSize = new Size(1280, 700);
             Controls.Add(loadingBox);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Loading";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Loading";
             ((System.ComponentModel.ISupportInitialize)loadingBox).EndInit();
             ResumeLayout(false);
