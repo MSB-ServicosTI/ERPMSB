@@ -14,8 +14,10 @@ namespace ERPGarcia
             InitializeComponent();
         }
 
+
         private async void ButtonLogin_Click(object sender, EventArgs e)
         {
+            /// TAB corrigido via propriedades
             if (!ValidarCamposLoginSenha())
                 return;
 
