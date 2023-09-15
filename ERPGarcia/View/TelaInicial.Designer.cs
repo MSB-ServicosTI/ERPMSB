@@ -33,6 +33,8 @@
             TxtBSenha = new TextBox();
             ButtonLogin = new Button();
             CheckBoxShowPass = new CheckBox();
+            LblLogin = new Label();
+            LblSenha = new Label();
             SuspendLayout();
             // 
             // TxtBLogin
@@ -79,11 +81,31 @@
             CheckBoxShowPass.UseVisualStyleBackColor = true;
             CheckBoxShowPass.CheckedChanged += CheckBoxShowPass_CheckedChanged;
             // 
+            // LblLogin
+            // 
+            LblLogin.AutoSize = true;
+            LblLogin.Location = new Point(52, 89);
+            LblLogin.Name = "LblLogin";
+            LblLogin.Size = new Size(40, 15);
+            LblLogin.TabIndex = 4;
+            LblLogin.Text = "Login:";
+            // 
+            // LblSenha
+            // 
+            LblSenha.AutoSize = true;
+            LblSenha.Location = new Point(52, 145);
+            LblSenha.Name = "LblSenha";
+            LblSenha.Size = new Size(42, 15);
+            LblSenha.TabIndex = 5;
+            LblSenha.Text = "Senha:";
+            // 
             // TelaInicial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(468, 366);
+            Controls.Add(LblSenha);
+            Controls.Add(LblLogin);
             Controls.Add(CheckBoxShowPass);
             Controls.Add(ButtonLogin);
             Controls.Add(TxtBSenha);
@@ -102,5 +124,7 @@
         private TextBox TxtBSenha;
         private Button ButtonLogin;
         private CheckBox CheckBoxShowPass;
+        private Label LblLogin;
+        private Label LblSenha;
     }
 }
