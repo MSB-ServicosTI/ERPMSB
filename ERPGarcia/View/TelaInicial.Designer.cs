@@ -43,7 +43,6 @@
             TxtBLogin.PlaceholderText = "Insira seu Login aqui";
             TxtBLogin.Size = new Size(358, 23);
             TxtBLogin.TabIndex = 0;
-            TxtBLogin.TabStop = false;
             // 
             // TxtBSenha
             // 
@@ -53,7 +52,6 @@
             TxtBSenha.PlaceholderText = "Insira sua Senha aqui";
             TxtBSenha.Size = new Size(358, 23);
             TxtBSenha.TabIndex = 1;
-            TxtBSenha.TabStop = false;
             TxtBSenha.UseSystemPasswordChar = true;
             // 
             // ButtonLogin
@@ -63,7 +61,7 @@
             ButtonLogin.MaximumSize = new Size(0, 23);
             ButtonLogin.Name = "ButtonLogin";
             ButtonLogin.Size = new Size(75, 23);
-            ButtonLogin.TabIndex = 2;
+            ButtonLogin.TabIndex = 0;
             ButtonLogin.Text = "Login";
             ButtonLogin.UseVisualStyleBackColor = true;
             ButtonLogin.Click += ButtonLogin_Click;
@@ -74,7 +72,7 @@
             CheckBoxShowPass.Location = new Point(52, 192);
             CheckBoxShowPass.Name = "CheckBoxShowPass";
             CheckBoxShowPass.Size = new Size(101, 19);
-            CheckBoxShowPass.TabIndex = 3;
+            CheckBoxShowPass.TabIndex = 4;
             CheckBoxShowPass.Text = "Mostrar senha";
             CheckBoxShowPass.UseVisualStyleBackColor = true;
             CheckBoxShowPass.CheckedChanged += CheckBoxShowPass_CheckedChanged;
