@@ -1,4 +1,5 @@
-﻿using ERPAPI.Model;
+﻿using ERPAPI.Context;
+using ERPAPI.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,17 +14,17 @@ namespace ERPAPI.Controller
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly UserManager<IdentityUser> userManager;
-        private readonly SignInManager<IdentityUser> signInManager;
+        private readonly UserManager<Colaborador> userManager;
         private readonly IConfiguration configuration;
+        private readonly AppDbContext appDbContext;
 
-        public UserController(UserManager<IdentityUser> userManager,
-                              SignInManager<IdentityUser> signInManager,
-                              IConfiguration configuration)
+        public UserController(UserManager<Colaborador> userManager,
+                              IConfiguration configuration,
+                              AppDbContext appDbContext)
         {
             this.userManager = userManager;
-            this.signInManager = signInManager;
             this.configuration = configuration;
+            this.appDbContext = appDbContext;
         }
 
         [HttpPost]
@@ -79,11 +80,14 @@ namespace ERPAPI.Controller
             if (userExists != null)
                 return StatusCode(StatusCodes.Status500InternalServerError, new AuthenticationResponse { Status = AuthenticationStatus.AlreadyExists, Message = "Um usuário com esse e-mail já existe." });
 
-            IdentityUser user = new()
+            Colaborador user = new()
             {
                 Email = model.EmailAddress,
                 SecurityStamp = Guid.NewGuid().ToString(),
-                UserName = model.Username
+                UserName = model.Username,
+                Nome = model.NomeColaborador,
+                DataNascimento = model.DataNascimento,
+                TipoContrato = model.TipoContrato
             };
 
             var result = await userManager.CreateAsync(user, model.Password);
@@ -93,6 +97,25 @@ namespace ERPAPI.Controller
             return Ok(new AuthenticationResponse { Status = AuthenticationStatus.Success, Message = "Usuário criado com sucesso." });
         }
 
+        [HttpPost]
+        [Route("addDepartment")]
+        public async Task<IActionResult> AddDepartment(int DepartmentId, string UserId)
+        {
+            var dp = appDbContext.Departamentos.FirstOrDefault(a => a.IDDepartamento == DepartmentId);
+            var test = userManager.Users;
+            var user = await userManager.FindByIdAsync(UserId);
+            if (dp == null || user == null) return BadRequest();
+
+            var dpUser = new ColaboradorDepartamento()
+            {
+                ID = user.Id,
+                IDDepartamento = dp.IDDepartamento
+            };
+
+            var result = appDbContext.ColaboradoresDepartamentos.Add(dpUser);
+            await appDbContext.SaveChangesAsync();
+            return (Ok($"Colaborador `{user.Nome}` adicionado ao departamento `{dp.Nome}`"));
+        }
 
         private JwtSecurityToken GetToken(List<Claim> authClaims)
         {

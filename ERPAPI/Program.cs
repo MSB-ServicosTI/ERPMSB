@@ -1,4 +1,5 @@
 using ERPAPI.Context;
+using ERPAPI.Model;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +17,7 @@ var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connection));
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services.AddIdentity<Colaborador, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>();
 
 
