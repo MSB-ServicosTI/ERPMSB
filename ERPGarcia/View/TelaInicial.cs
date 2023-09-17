@@ -14,8 +14,7 @@ namespace ERPGarcia
             InitializeComponent();
         }
 
-
-        private async void ButtonLogin_Click(object sender, EventArgs e)
+        private async void RealizarLogin() ///funcao para realizar login
         {
             /// TAB corrigido via propriedades
             if (!ValidarCamposLoginSenha())
@@ -51,6 +50,12 @@ namespace ERPGarcia
             var responseContent = JsonConvert.DeserializeObject<AuthenticationResponse>(await response.Content.ReadAsStringAsync());
 
             MessageBox.Show(responseContent.Message, "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+
+        private async void ButtonLogin_Click(object sender, EventArgs e)
+        {
+            RealizarLogin(); 
         }
 
         private bool ValidarCamposLoginSenha()
