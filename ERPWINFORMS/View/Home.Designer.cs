@@ -1,4 +1,4 @@
-﻿namespace ERPGarcia.View
+﻿namespace ERPMSB.View
 {
     partial class Home
     {
