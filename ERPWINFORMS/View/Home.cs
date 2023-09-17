@@ -1,4 +1,4 @@
-﻿using ERPGarcia.Model;
+﻿using ERPMSB.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ERPGarcia.View
+namespace ERPMSB.View
 {
     public partial class Home : CustomForm
     {

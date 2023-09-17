@@ -1,4 +1,4 @@
-﻿namespace ERPGarcia
+﻿namespace ERPMSB
 {
     partial class TelaInicial
     {

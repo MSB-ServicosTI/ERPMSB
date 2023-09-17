@@ -1,5 +1,5 @@
-﻿using ERPGarcia.Model;
-using ERPGarcia.View;
+﻿using ERPMSB.Model;
+using ERPMSB.View;
 using Newtonsoft.Json;
 using System;
 using System.Net.Http.Headers;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace ERPGarcia.View
+namespace ERPMSB.View
 {
     public partial class RegistroUsers : Form
     {

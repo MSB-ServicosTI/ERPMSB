@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERPGarcia", "ERPGarcia\ERPGarcia.csproj", "{BE360096-8A44-42CE-A749-748752D9C84D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERPWINFORMS", "ERPGarcia\ERPWINFORMS.csproj", "{BE360096-8A44-42CE-A749-748752D9C84D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERPAPI", "ERPAPI\ERPAPI.csproj", "{07C18D3C-9D06-403E-809F-45EB5A9A351F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERPAPI", "ERPAPI\ERPAPI.csproj", "{07C18D3C-9D06-403E-809F-45EB5A9A351F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
