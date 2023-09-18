@@ -14,7 +14,7 @@ namespace ERPAPI.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.Entity<ColaboradorDepartamento>().HasKey(cd => new { cd.ID, cd.IDDepartamento });
+            builder.Entity<ColaboradorDepartamento>().HasKey(cd => new { cd.IDColaborador, cd.IDDepartamento });
         }
 
         public DbSet<Colaborador> Colaboradores { get; set; }

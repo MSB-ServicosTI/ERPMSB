@@ -5,7 +5,7 @@ namespace ERPAPI.Model
 {
     public class ColaboradorDepartamento
     {
-        public string ID { get; set; }
-        public int IDDepartamento { get; set; }
+        public string IDColaborador { get; set; }
+        public string IDDepartamento { get; set; }
     }
 }

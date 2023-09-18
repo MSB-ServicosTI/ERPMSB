@@ -15,16 +15,16 @@ namespace ERPAPI.Controller
     public class UserController : ControllerBase
     {
         private readonly UserManager<Colaborador> userManager;
+        private readonly RoleManager<Departamento> roleManager;
         private readonly IConfiguration configuration;
-        private readonly AppDbContext appDbContext;
 
         public UserController(UserManager<Colaborador> userManager,
-                              IConfiguration configuration,
-                              AppDbContext appDbContext)
+                              RoleManager<Departamento> roleManager,
+                              IConfiguration configuration)
         {
             this.userManager = userManager;
+            this.roleManager = roleManager;
             this.configuration = configuration;
-            this.appDbContext = appDbContext;
         }
 
         [HttpPost]
@@ -99,22 +99,23 @@ namespace ERPAPI.Controller
 
         [HttpPost]
         [Route("addDepartment")]
-        public async Task<IActionResult> AddDepartment(int DepartmentId, string UserId)
+        public async Task<IActionResult> AddDepartment(string DepartmentId, string UserId)
         {
-            var dp = appDbContext.Departamentos.FirstOrDefault(a => a.IDDepartamento == DepartmentId);
-            var test = userManager.Users;
+            var departamento = await roleManager.FindByIdAsync(DepartmentId);
+
+            if (departamento == null)
+                return BadRequest(new AuthenticationResponse { Status = AuthenticationStatus.DepartmentNotFound, Message = "Não foi possível encontrar o departamento especificado." });
+
             var user = await userManager.FindByIdAsync(UserId);
-            if (dp == null || user == null) return BadRequest();
 
-            var dpUser = new ColaboradorDepartamento()
-            {
-                ID = user.Id,
-                IDDepartamento = dp.IDDepartamento
-            };
+            if (user == null)
+                return BadRequest(new AuthenticationResponse { Status = AuthenticationStatus.UserNotFound, Message = "Usuário não encontrado." });
 
-            var result = appDbContext.ColaboradoresDepartamentos.Add(dpUser);
-            await appDbContext.SaveChangesAsync();
-            return (Ok($"Colaborador `{user.Nome}` adicionado ao departamento `{dp.Nome}`"));
+            var userRoles = await userManager.GetRolesAsync(user);
+
+            if (userRoles.Any(a => a == departamento.Name))
+                return BadRequest(new AuthenticationResponse { Status = AuthenticationStatus.AlreadyExists, Message = $"O usuário já está no departamento {departamento.Name}" });
+            return (Ok($"Colaborador `{user.Nome}` adicionado ao departamento `{departamento.Name}`"));
         }
 
         private JwtSecurityToken GetToken(List<Claim> authClaims)

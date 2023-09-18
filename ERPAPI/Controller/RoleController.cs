@@ -11,17 +11,14 @@ namespace ERPAPI.Controller
     [ApiController]
     public class RoleController : ControllerBase
     {
-        private readonly RoleManager<IdentityRole> roleManager;
-        private readonly UserManager<IdentityUser> userManager;
-        private readonly IConfiguration configuration;
+        private readonly RoleManager<Departamento> roleManager;
+        private readonly UserManager<Colaborador> userManager;
 
-        public RoleController(RoleManager<IdentityRole> roleManager,
-                              UserManager<IdentityUser> userManager,
-                              IConfiguration configuration)
+        public RoleController(RoleManager<Departamento> roleManager,
+                              UserManager<Colaborador> userManager)
         {
             this.roleManager = roleManager;
             this.userManager = userManager;
-            this.configuration = configuration;
         }
 
         [HttpGet]
@@ -40,9 +37,10 @@ namespace ERPAPI.Controller
             if (role != null)
                 return BadRequest($"A atribuição {model.Name} já existe.");
 
-            var cRole = new IdentityRole()
+            var cRole = new Departamento()
             {
-                Name = model.Name
+                Name = model.Name,
+                Nome = model.Name
             };
 
             var result = await roleManager.CreateAsync(cRole);
@@ -73,22 +71,22 @@ namespace ERPAPI.Controller
         }
 
         [HttpPost]
-        [Route("addUserToRole")]
-        public async Task<IActionResult> AddUserToRole([FromBody] JObject model)
+        [Route("addUser")]
+        public async Task<IActionResult> AddUserToRole([FromBody] RegisterModelUserToRole model)
         {
-            if (model["User"] == null || model["Role"] == null)
-                return BadRequest();
-
-
-            var role = await roleManager.FindByNameAsync(model["Role"].ToString());
-            var user = await userManager.FindByNameAsync(model["User"].ToString());
+            var role = await roleManager.FindByIdAsync(model.DepartamentoId);
+            var user = await userManager.FindByIdAsync(model.UserId);
 
             if (role != null && user != null)
             {
+
                 var response = await userManager.AddToRoleAsync(user, role.Name);
                 if (response.Succeeded)
                     return Ok($"Usuário {user.UserName} adicionado à atribuição {role.Name}");
+
+                return BadRequest(response.Errors.FirstOrDefault());
             }
+
             return BadRequest($"Atribuição ou Usuário inválidos.");
         }
     }

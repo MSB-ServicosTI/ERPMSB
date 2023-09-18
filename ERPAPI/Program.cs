@@ -17,7 +17,7 @@ var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connection));
 
-builder.Services.AddIdentity<Colaborador, IdentityRole>()
+builder.Services.AddIdentity<Colaborador, Departamento>()
     .AddEntityFrameworkStores<AppDbContext>();
 
 

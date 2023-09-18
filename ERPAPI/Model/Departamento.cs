@@ -1,11 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace ERPAPI.Model
 {
-    public class Departamento
+    public class Departamento : IdentityRole
     {
-        [Key]
-        public int IDDepartamento { get; set; }
+        [Required]
         public string Nome { get; set; }
+        public string? ResponsavelID { get; set; }
     }
 }

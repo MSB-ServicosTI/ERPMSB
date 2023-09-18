@@ -22,4 +22,12 @@ namespace ERPAPI.Model
         [Required(ErrorMessage = "O tipo de contratação é obrigatório")]
         public TipoContrato TipoContrato { get; set; }
     }
+
+    public class RegisterModelUserToRole
+    {
+        [Required(ErrorMessage = "Especificar o usuário ao qual será adicionado ao departamento é obrigatório.")]
+        public string UserId { get; set; }
+        [Required(ErrorMessage = "Especificar o departamento ao qual o usuário será adicionado é obrigatório.")]
+        public string DepartamentoId { get; set; }
+    }
 }
