@@ -1,4 +1,5 @@
-﻿using ERPAPI.Model;
+﻿using ERPAPI.Context;
+using ERPAPI.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,16 +14,16 @@ namespace ERPAPI.Controller
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly UserManager<IdentityUser> userManager;
-        private readonly SignInManager<IdentityUser> signInManager;
+        private readonly UserManager<Colaborador> userManager;
+        private readonly RoleManager<Departamento> roleManager;
         private readonly IConfiguration configuration;
 
-        public UserController(UserManager<IdentityUser> userManager,
-                              SignInManager<IdentityUser> signInManager,
+        public UserController(UserManager<Colaborador> userManager,
+                              RoleManager<Departamento> roleManager,
                               IConfiguration configuration)
         {
             this.userManager = userManager;
-            this.signInManager = signInManager;
+            this.roleManager = roleManager;
             this.configuration = configuration;
         }
 
@@ -79,11 +80,14 @@ namespace ERPAPI.Controller
             if (userExists != null)
                 return StatusCode(StatusCodes.Status500InternalServerError, new AuthenticationResponse { Status = AuthenticationStatus.AlreadyExists, Message = "Um usuário com esse e-mail já existe." });
 
-            IdentityUser user = new()
+            Colaborador user = new()
             {
                 Email = model.EmailAddress,
                 SecurityStamp = Guid.NewGuid().ToString(),
-                UserName = model.Username
+                UserName = model.Username,
+                Nome = model.NomeColaborador,
+                DataNascimento = model.DataNascimento,
+                TipoContrato = model.TipoContrato
             };
 
             var result = await userManager.CreateAsync(user, model.Password);
@@ -93,6 +97,26 @@ namespace ERPAPI.Controller
             return Ok(new AuthenticationResponse { Status = AuthenticationStatus.Success, Message = "Usuário criado com sucesso." });
         }
 
+        [HttpPost]
+        [Route("addDepartment")]
+        public async Task<IActionResult> AddDepartment(string DepartmentId, string UserId)
+        {
+            var departamento = await roleManager.FindByIdAsync(DepartmentId);
+
+            if (departamento == null)
+                return BadRequest(new AuthenticationResponse { Status = AuthenticationStatus.DepartmentNotFound, Message = "Não foi possível encontrar o departamento especificado." });
+
+            var user = await userManager.FindByIdAsync(UserId);
+
+            if (user == null)
+                return BadRequest(new AuthenticationResponse { Status = AuthenticationStatus.UserNotFound, Message = "Usuário não encontrado." });
+
+            var userRoles = await userManager.GetRolesAsync(user);
+
+            if (userRoles.Any(a => a == departamento.Name))
+                return BadRequest(new AuthenticationResponse { Status = AuthenticationStatus.AlreadyExists, Message = $"O usuário já está no departamento {departamento.Name}" });
+            return (Ok($"Colaborador `{user.Nome}` adicionado ao departamento `{departamento.Name}`"));
+        }
 
         private JwtSecurityToken GetToken(List<Claim> authClaims)
         {
