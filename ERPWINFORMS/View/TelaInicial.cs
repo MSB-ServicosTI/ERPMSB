@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ERPMSB
 {
-    public partial class TelaInicial : CustomForm
+    public partial class TelaInicial : Form
     {
         public TelaInicial()
         {
