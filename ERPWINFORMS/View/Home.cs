@@ -21,49 +21,49 @@ namespace ERPMSB.View
 
         private void InitializeComponent()
         {
-            administraçãoToolStripMenuItem = new ToolStripMenuItem();
-            registrarNovoUsuárioToolStripMenuItem = new ToolStripMenuItem();
+            tsmiAdministracao = new ToolStripMenuItem();
+            tsmiRegistrarNovoUsuário = new ToolStripMenuItem();
             menuStrip1 = new MenuStrip();
-            informaçõesToolStripMenuItem = new ToolStripMenuItem();
-            sobreToolStripMenuItem = new ToolStripMenuItem();
+            tsmiInformacoes = new ToolStripMenuItem();
+            tsmiSobre = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
-            // administraçãoToolStripMenuItem
+            // tsmiAdministracao
             // 
-            administraçãoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { registrarNovoUsuárioToolStripMenuItem });
-            administraçãoToolStripMenuItem.Name = "administraçãoToolStripMenuItem";
-            administraçãoToolStripMenuItem.Size = new Size(96, 20);
-            administraçãoToolStripMenuItem.Text = "Administração";
+            tsmiAdministracao.DropDownItems.AddRange(new ToolStripItem[] { tsmiRegistrarNovoUsuário });
+            tsmiAdministracao.Name = "tsmiAdministracao";
+            tsmiAdministracao.Size = new Size(96, 20);
+            tsmiAdministracao.Text = "Administração";
             // 
-            // registrarNovoUsuárioToolStripMenuItem
+            // tsmiRegistrarNovoUsuário
             // 
-            registrarNovoUsuárioToolStripMenuItem.Name = "registrarNovoUsuárioToolStripMenuItem";
-            registrarNovoUsuárioToolStripMenuItem.Size = new Size(193, 22);
-            registrarNovoUsuárioToolStripMenuItem.Text = "Registrar novo Usuário";
-            registrarNovoUsuárioToolStripMenuItem.Click += registrarNovoUsuárioToolStripMenuItem_Click;
+            tsmiRegistrarNovoUsuário.Name = "tsmiRegistrarNovoUsuário";
+            tsmiRegistrarNovoUsuário.Size = new Size(193, 22);
+            tsmiRegistrarNovoUsuário.Text = "Registrar novo Usuário";
+            tsmiRegistrarNovoUsuário.Click += registrarNovoUsuárioToolStripMenuItem_Click;
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { administraçãoToolStripMenuItem, informaçõesToolStripMenuItem, sobreToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { tsmiAdministracao, tsmiInformacoes, tsmiSobre });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(552, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
-            // informaçõesToolStripMenuItem
+            // tsmiInformacoes
             // 
-            informaçõesToolStripMenuItem.Name = "informaçõesToolStripMenuItem";
-            informaçõesToolStripMenuItem.Size = new Size(88, 20);
-            informaçõesToolStripMenuItem.Text = "Informações ";
+            tsmiInformacoes.Name = "tsmiInformacoes";
+            tsmiInformacoes.Size = new Size(88, 20);
+            tsmiInformacoes.Text = "Informações ";
             // 
-            // sobreToolStripMenuItem
+            // tsmiSobre
             // 
-            sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
-            sobreToolStripMenuItem.Size = new Size(49, 20);
-            sobreToolStripMenuItem.Text = "Sobre";
-            sobreToolStripMenuItem.Click += sobreToolStripMenuItem_Click;
+            tsmiSobre.Name = "tsmiSobre";
+            tsmiSobre.Size = new Size(49, 20);
+            tsmiSobre.Text = "Sobre";
+            tsmiSobre.Click += sobreToolStripMenuItem_Click;
             // 
             // Home
             // 

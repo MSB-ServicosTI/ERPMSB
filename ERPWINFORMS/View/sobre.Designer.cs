@@ -46,7 +46,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(185, 166);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "Sobre";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Sobre";
             ResumeLayout(false);
             PerformLayout();
