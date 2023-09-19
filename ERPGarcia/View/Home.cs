@@ -20,20 +20,13 @@ namespace ERPGarcia.View
 
         private void InitializeComponent()
         {
-            menuStrip1 = new MenuStrip();
             administraçãoToolStripMenuItem = new ToolStripMenuItem();
             registrarNovoUsuárioToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip1 = new MenuStrip();
+            informaçõesToolStripMenuItem = new ToolStripMenuItem();
+            sobreToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { administraçãoToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(552, 24);
-            menuStrip1.TabIndex = 0;
-            menuStrip1.Text = "menuStrip1";
             // 
             // administraçãoToolStripMenuItem
             // 
@@ -48,6 +41,28 @@ namespace ERPGarcia.View
             registrarNovoUsuárioToolStripMenuItem.Size = new Size(193, 22);
             registrarNovoUsuárioToolStripMenuItem.Text = "Registrar novo Usuário";
             registrarNovoUsuárioToolStripMenuItem.Click += registrarNovoUsuárioToolStripMenuItem_Click;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { administraçãoToolStripMenuItem, informaçõesToolStripMenuItem, sobreToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(552, 24);
+            menuStrip1.TabIndex = 0;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // informaçõesToolStripMenuItem
+            // 
+            informaçõesToolStripMenuItem.Name = "informaçõesToolStripMenuItem";
+            informaçõesToolStripMenuItem.Size = new Size(88, 20);
+            informaçõesToolStripMenuItem.Text = "Informações ";
+            // 
+            // sobreToolStripMenuItem
+            // 
+            sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
+            sobreToolStripMenuItem.Size = new Size(49, 20);
+            sobreToolStripMenuItem.Text = "Sobre";
+            sobreToolStripMenuItem.Click += sobreToolStripMenuItem_Click;
             // 
             // Home
             // 
@@ -66,6 +81,12 @@ namespace ERPGarcia.View
         {
             var resgistrarUsuarios = new RegistroUsers();
             resgistrarUsuarios.Show();
+        }
+
+        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var sobre = new Sobre();
+            sobre.Show();
         }
     }
 }

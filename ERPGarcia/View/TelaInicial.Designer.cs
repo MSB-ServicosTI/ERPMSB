@@ -35,6 +35,10 @@
             CheckBoxShowPass = new CheckBox();
             LblLogin = new Label();
             LblSenha = new Label();
+            menuStrip1 = new MenuStrip();
+            Strip = new ToolStripMenuItem();
+            toolStripTextBox1 = new ToolStripTextBox();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // TxtBLogin
@@ -97,6 +101,29 @@
             LblSenha.TabIndex = 5;
             LblSenha.Text = "Senha:";
             // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { Strip });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(468, 24);
+            menuStrip1.TabIndex = 6;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // Strip
+            // 
+            Strip.DropDownItems.AddRange(new ToolStripItem[] { toolStripTextBox1 });
+            Strip.Name = "Strip";
+            Strip.Size = new Size(49, 20);
+            Strip.Text = "Sobre";
+            Strip.Click += Strip_Click;
+            // 
+            // toolStripTextBox1
+            // 
+            toolStripTextBox1.Name = "toolStripTextBox1";
+            toolStripTextBox1.Size = new Size(100, 23);
+            toolStripTextBox1.Click += toolStripTextBox1_Click;
+            // 
             // TelaInicial
             // 
             AcceptButton = ButtonLogin;
@@ -109,10 +136,14 @@
             Controls.Add(ButtonLogin);
             Controls.Add(TxtBSenha);
             Controls.Add(TxtBLogin);
+            Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MainMenuStrip = menuStrip1;
             MinimumSize = new Size(484, 405);
             Name = "TelaInicial";
             StartPosition = FormStartPosition.CenterScreen;
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -125,5 +156,8 @@
         private CheckBox CheckBoxShowPass;
         private Label LblLogin;
         private Label LblSenha;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem Strip;
+        private ToolStripTextBox toolStripTextBox1;
     }
 }
