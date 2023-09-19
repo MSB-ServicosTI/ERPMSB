@@ -37,9 +37,9 @@
             // 
             loadingBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             loadingBox.Image = (Image)resources.GetObject("loadingBox.Image");
-            loadingBox.Location = new Point(574, 298);
+            loadingBox.Location = new Point(21, 18);
             loadingBox.Name = "loadingBox";
-            loadingBox.Size = new Size(75, 77);
+            loadingBox.Size = new Size(84, 85);
             loadingBox.TabIndex = 0;
             loadingBox.TabStop = false;
             // 
@@ -48,7 +48,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1280, 700);
+            ClientSize = new Size(123, 119);
             Controls.Add(loadingBox);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Loading";
