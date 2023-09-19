@@ -13,6 +13,7 @@
         UserNotFound = 2,
         InvalidPassword = 3,
         AlreadyExists = 4,
-        InternalServerError = 5
+        InternalServerError = 5,
+        DepartmentNotFound = 6
     }
 }

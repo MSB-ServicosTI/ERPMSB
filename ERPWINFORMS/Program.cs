@@ -1,4 +1,4 @@
-namespace ERPGarcia
+namespace ERPMSB
 {
     internal static class Program
     {

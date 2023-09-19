@@ -5,12 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ERPGarcia.Model
+namespace ERPMSB.Model
 {
-    public class LoginModel
+    public class RegisterModel
     {
         [Required(ErrorMessage = "Usuário é obrigatório.")]
         public string? Username { get; set; }
+
+        [EmailAddress]
+        [Required(ErrorMessage = "E-Mail é obrigatório")]
+        public string? EmailAddress { get; set; }
 
         [Required(ErrorMessage = "Senha é obrigatória")]
         public string? Password { get; set; }
