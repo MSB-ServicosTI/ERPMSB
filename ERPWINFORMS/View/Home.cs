@@ -1,4 +1,5 @@
 ﻿using ERPMSB.Model;
+using ERPWINFORMS.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,7 @@ namespace ERPMSB.View
             menuStrip1 = new MenuStrip();
             administraçãoToolStripMenuItem = new ToolStripMenuItem();
             registrarNovoUsuárioToolStripMenuItem = new ToolStripMenuItem();
+            colaboradoresDepartamentosToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -37,7 +39,7 @@ namespace ERPMSB.View
             // 
             // administraçãoToolStripMenuItem
             // 
-            administraçãoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { registrarNovoUsuárioToolStripMenuItem });
+            administraçãoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { registrarNovoUsuárioToolStripMenuItem, colaboradoresDepartamentosToolStripMenuItem });
             administraçãoToolStripMenuItem.Name = "administraçãoToolStripMenuItem";
             administraçãoToolStripMenuItem.Size = new Size(96, 20);
             administraçãoToolStripMenuItem.Text = "Administração";
@@ -45,9 +47,16 @@ namespace ERPMSB.View
             // registrarNovoUsuárioToolStripMenuItem
             // 
             registrarNovoUsuárioToolStripMenuItem.Name = "registrarNovoUsuárioToolStripMenuItem";
-            registrarNovoUsuárioToolStripMenuItem.Size = new Size(193, 22);
+            registrarNovoUsuárioToolStripMenuItem.Size = new Size(243, 22);
             registrarNovoUsuárioToolStripMenuItem.Text = "Registrar novo Usuário";
             registrarNovoUsuárioToolStripMenuItem.Click += registrarNovoUsuárioToolStripMenuItem_Click;
+            // 
+            // colaboradoresDepartamentosToolStripMenuItem
+            // 
+            colaboradoresDepartamentosToolStripMenuItem.Name = "colaboradoresDepartamentosToolStripMenuItem";
+            colaboradoresDepartamentosToolStripMenuItem.Size = new Size(243, 22);
+            colaboradoresDepartamentosToolStripMenuItem.Text = "Colaboradores / Departamentos";
+            colaboradoresDepartamentosToolStripMenuItem.Click += colaboradoresDepartamentosToolStripMenuItem_Click;
             // 
             // Home
             // 
@@ -56,6 +65,7 @@ namespace ERPMSB.View
             MainMenuStrip = menuStrip1;
             Name = "Home";
             StartPosition = FormStartPosition.CenterScreen;
+            Load += Home_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -66,6 +76,17 @@ namespace ERPMSB.View
         {
             var resgistrarUsuarios = new RegistroUsers();
             resgistrarUsuarios.Show();
+        }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void colaboradoresDepartamentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var atribuicoes = new Atribuicoes();
+            atribuicoes.Show();
         }
     }
 }

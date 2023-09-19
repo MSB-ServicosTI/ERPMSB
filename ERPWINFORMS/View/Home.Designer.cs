@@ -23,5 +23,6 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem administraçãoToolStripMenuItem;
         private ToolStripMenuItem registrarNovoUsuárioToolStripMenuItem;
+        private ToolStripMenuItem colaboradoresDepartamentosToolStripMenuItem;
     }
 }

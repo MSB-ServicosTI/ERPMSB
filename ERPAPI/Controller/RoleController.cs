@@ -25,8 +25,9 @@ namespace ERPAPI.Controller
         [Route("getAllRoles")]
         public async Task<IActionResult> GetAllRoles()
         {
-            var roles = await roleManager.Roles.ToListAsync();
-            return Ok(roles);
+            var roles = roleManager.Roles;
+            var rolesDTO = DepartamentoMapper.ProjectToDTO(roles);
+            return Ok(await rolesDTO.ToListAsync());
         }
 
         [HttpPost]
