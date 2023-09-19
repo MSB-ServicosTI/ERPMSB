@@ -23,7 +23,8 @@
         private ToolStripMenuItem tsmiAdministracao;
         private ToolStripMenuItem tsmiRegistrarNovoUsuário;
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem tsmiInformacoes;
-        private ToolStripMenuItem tsmiSobre;
+        private ToolStripMenuItem administraçãoToolStripMenuItem;
+        private ToolStripMenuItem registrarNovoUsuárioToolStripMenuItem;
+        private ToolStripMenuItem colaboradoresDepartamentosToolStripMenuItem;
     }
 }

@@ -2,6 +2,8 @@ using ERPAPI.Model;
 using ERPMSB.Model;
 using ERPMSB.View;
 using Newtonsoft.Json;
+using System.Collections.Specialized;
+using System.Configuration;
 using System.Net.Http.Headers;
 using System.Text;
 
@@ -9,6 +11,7 @@ namespace ERPMSB
 {
     public partial class TelaInicial : Form
     {
+        NameValueCollection appSettings = ConfigurationManager.AppSettings;
         public TelaInicial()
         {
             InitializeComponent();
@@ -28,8 +31,7 @@ namespace ERPMSB
 
             HttpClient requestLogin = new()
             {
-                BaseAddress = new Uri("https://localhost:7239/"),
-
+                BaseAddress = new Uri(appSettings["Ip"]),
             };
 
             requestLogin.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
