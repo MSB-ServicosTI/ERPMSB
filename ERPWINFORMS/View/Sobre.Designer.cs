@@ -38,7 +38,7 @@
             label1.Name = "label1";
             label1.Size = new Size(112, 150);
             label1.TabIndex = 0;
-            label1.Text = "Gerente do projeto: \r\nMurilo Barros.\r\n\r\nDesenvolvedor:\r\n Murilo Barros \r\nGabriel Garcia\r\nMatheus Plesky\r\nAna Paula\r\nKelvin Pereira\r\nGuilherme Bezerra\r\n";
+            label1.Text = "Gerente do projeto: \r\nMurilo Barros.\r\n\r\nDesenvolvedor:\r\nMurilo Barros \r\nGabriel Garcia\r\nMatheus Plesky\r\nAna Paula\r\nKelvin Pereira\r\nGuilherme Bezerra\r\n";
             // 
             // Sobre
             // 

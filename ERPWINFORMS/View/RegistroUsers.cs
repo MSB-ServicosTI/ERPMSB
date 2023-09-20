@@ -23,9 +23,12 @@ namespace ERPMSB.View
 
             var registerModel = new RegisterModel()
             {
-                Username = inputUser.Text,
+                NomeColaborador = inputNomeColaborador.Text,
                 EmailAddress = inputEmail.Text,
+                Username = inputUser.Text,
                 Password = inputSenha.Text,
+                DataNascimento = dtpDataNascimento.Value,
+                TipoContrato = (ERPWINFORMS.Model.TipoContrato)cbxTipoContrato.SelectedIndex
             };
 
             HttpClient requestRegister = new()
@@ -41,10 +44,12 @@ namespace ERPMSB.View
             {
                 string data = await response.Content.ReadAsStringAsync();
                 MessageBox.Show($"Usuário {registerModel.Username} criado com sucesso");
-                inputUser.Clear();
+                inputNomeColaborador.Clear();
                 inputEmail.Clear();
+                inputUser.Clear();
                 inputSenha.Clear();
                 inputConfSenha.Clear();
+                cbxTipoContrato.SelectedIndex = -1;
             }
             else
             {
@@ -97,8 +102,12 @@ namespace ERPMSB.View
                 (!senha.Any(c => char.IsSymbol(c)
                 || char.IsPunctuation(c))))
                 return false;
-
             return true;
+        }
+
+        private void cancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
