@@ -20,6 +20,7 @@
             base.Dispose(disposing);
         }
 
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -31,45 +32,51 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaInicial));
             TxtBLogin = new TextBox();
             TxtBSenha = new TextBox();
-            ButtonLogin = new Button();
+            btnLogin = new Button();
             CheckBoxShowPass = new CheckBox();
             LblLogin = new Label();
             LblSenha = new Label();
             menuStrip = new MenuStrip();
             tsmiSobre = new ToolStripMenuItem();
+            btnSair = new Button();
             menuStrip.SuspendLayout();
             SuspendLayout();
             // 
             // TxtBLogin
             // 
             TxtBLogin.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            TxtBLogin.Cursor = Cursors.IBeam;
             TxtBLogin.Location = new Point(52, 107);
             TxtBLogin.Name = "TxtBLogin";
             TxtBLogin.PlaceholderText = "Insira seu Login aqui";
-            TxtBLogin.Size = new Size(358, 23);
+            TxtBLogin.Size = new Size(386, 23);
             TxtBLogin.TabIndex = 0;
             // 
             // TxtBSenha
             // 
             TxtBSenha.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            TxtBSenha.Cursor = Cursors.IBeam;
             TxtBSenha.Location = new Point(52, 163);
             TxtBSenha.Name = "TxtBSenha";
             TxtBSenha.PlaceholderText = "Insira sua Senha aqui";
-            TxtBSenha.Size = new Size(358, 23);
+            TxtBSenha.Size = new Size(386, 23);
             TxtBSenha.TabIndex = 1;
             TxtBSenha.UseSystemPasswordChar = true;
             // 
-            // ButtonLogin
+            // btnLogin
             // 
-            ButtonLogin.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            ButtonLogin.Location = new Point(190, 229);
-            ButtonLogin.MaximumSize = new Size(0, 23);
-            ButtonLogin.Name = "ButtonLogin";
-            ButtonLogin.Size = new Size(75, 23);
-            ButtonLogin.TabIndex = 0;
-            ButtonLogin.Text = "Login";
-            ButtonLogin.UseVisualStyleBackColor = true;
-            ButtonLogin.Click += ButtonLogin_Click;
+            btnLogin.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnLogin.Cursor = Cursors.Hand;
+            btnLogin.FlatAppearance.BorderColor = Color.DimGray;
+            btnLogin.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLogin.Location = new Point(282, 217);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(75, 23);
+            btnLogin.TabIndex = 0;
+            btnLogin.TabStop = false;
+            btnLogin.Text = "Login";
+            btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.Click += ButtonLogin_Click;
             // 
             // CheckBoxShowPass
             // 
@@ -77,7 +84,7 @@
             CheckBoxShowPass.Location = new Point(52, 192);
             CheckBoxShowPass.Name = "CheckBoxShowPass";
             CheckBoxShowPass.Size = new Size(101, 19);
-            CheckBoxShowPass.TabIndex = 4;
+            CheckBoxShowPass.TabIndex = 2;
             CheckBoxShowPass.Text = "Mostrar senha";
             CheckBoxShowPass.UseVisualStyleBackColor = true;
             CheckBoxShowPass.CheckedChanged += CheckBoxShowPass_CheckedChanged;
@@ -105,7 +112,7 @@
             menuStrip.Items.AddRange(new ToolStripItem[] { tsmiSobre });
             menuStrip.Location = new Point(0, 0);
             menuStrip.Name = "menuStrip";
-            menuStrip.Size = new Size(468, 24);
+            menuStrip.Size = new Size(496, 24);
             menuStrip.TabIndex = 6;
             menuStrip.Text = "menuStrip1";
             // 
@@ -116,22 +123,43 @@
             tsmiSobre.Text = "Sobre";
             tsmiSobre.Click += sobreToolStripMenuItem_Click;
             // 
+            // btnSair
+            // 
+            btnSair.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnSair.Cursor = Cursors.Hand;
+            btnSair.FlatAppearance.BorderColor = Color.DimGray;
+            btnSair.Location = new Point(372, 217);
+            btnSair.Name = "btnSair";
+            btnSair.Size = new Size(75, 23);
+            btnSair.TabIndex = 0;
+            btnSair.TabStop = false;
+            btnSair.Text = "Sair";
+            btnSair.UseVisualStyleBackColor = true;
+            // 
             // TelaInicial
             // 
-            AcceptButton = ButtonLogin;
+            AcceptButton = btnLogin;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(468, 366);
+            AutoValidate = AutoValidate.EnableAllowFocusChange;
+            ClientSize = new Size(496, 325);
+            Controls.Add(btnSair);
             Controls.Add(LblSenha);
             Controls.Add(LblLogin);
             Controls.Add(CheckBoxShowPass);
-            Controls.Add(ButtonLogin);
+            Controls.Add(btnLogin);
             Controls.Add(TxtBSenha);
             Controls.Add(TxtBLogin);
             Controls.Add(menuStrip);
+            Cursor = Cursors.Default;
+            ForeColor = SystemColors.ActiveCaptionText;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            ImeMode = ImeMode.On;
             MainMenuStrip = menuStrip;
-            MinimumSize = new Size(484, 405);
+            MaximizeBox = false;
+            MaximumSize = new Size(800, 900);
+            MinimizeBox = false;
+            MinimumSize = new Size(484, 0);
             Name = "TelaInicial";
             StartPosition = FormStartPosition.CenterScreen;
             menuStrip.ResumeLayout(false);
@@ -144,11 +172,13 @@
 
         private TextBox TxtBLogin;
         private TextBox TxtBSenha;
-        private Button ButtonLogin;
+        private Button btnLogin;
+        private Button btnSair;
         private CheckBox CheckBoxShowPass;
         private Label LblLogin;
         private Label LblSenha;
         private MenuStrip menuStrip;
         private ToolStripMenuItem tsmiSobre;
+        private Label label1;
     }
 }
