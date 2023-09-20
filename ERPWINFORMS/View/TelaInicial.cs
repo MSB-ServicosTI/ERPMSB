@@ -55,7 +55,7 @@ namespace ERPMSB
 
         private async void ButtonLogin_Click(object sender, EventArgs e)
         {
-            RealizarLogin(); 
+            RealizarLogin();
         }
 
         private bool ValidarCamposLoginSenha()
@@ -104,6 +104,16 @@ namespace ERPMSB
                 TxtBSenha.UseSystemPasswordChar = false;
             else
                 TxtBSenha.UseSystemPasswordChar = true;
+        }
+
+        private void toolStripTextBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Strip_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

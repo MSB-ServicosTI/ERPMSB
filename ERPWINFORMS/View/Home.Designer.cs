@@ -20,8 +20,10 @@
             base.Dispose(disposing);
         }
 
+        private ToolStripMenuItem tsmiAdministracao;
+        private ToolStripMenuItem tsmiRegistrarNovoUsuário;
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem administraçãoToolStripMenuItem;
-        private ToolStripMenuItem registrarNovoUsuárioToolStripMenuItem;
+        private ToolStripMenuItem tsmiInformacoes;
+        private ToolStripMenuItem tsmiSobre;
     }
 }

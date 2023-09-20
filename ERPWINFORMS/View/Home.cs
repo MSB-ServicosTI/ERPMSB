@@ -1,4 +1,5 @@
-﻿using ERPMSB.Model;
+﻿using ERPGarcia.View;
+using ERPMSB.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,34 +21,49 @@ namespace ERPMSB.View
 
         private void InitializeComponent()
         {
+            tsmiAdministracao = new ToolStripMenuItem();
+            tsmiRegistrarNovoUsuário = new ToolStripMenuItem();
             menuStrip1 = new MenuStrip();
-            administraçãoToolStripMenuItem = new ToolStripMenuItem();
-            registrarNovoUsuárioToolStripMenuItem = new ToolStripMenuItem();
+            tsmiInformacoes = new ToolStripMenuItem();
+            tsmiSobre = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
+            // tsmiAdministracao
+            // 
+            tsmiAdministracao.DropDownItems.AddRange(new ToolStripItem[] { tsmiRegistrarNovoUsuário });
+            tsmiAdministracao.Name = "tsmiAdministracao";
+            tsmiAdministracao.Size = new Size(96, 20);
+            tsmiAdministracao.Text = "Administração";
+            // 
+            // tsmiRegistrarNovoUsuário
+            // 
+            tsmiRegistrarNovoUsuário.Name = "tsmiRegistrarNovoUsuário";
+            tsmiRegistrarNovoUsuário.Size = new Size(193, 22);
+            tsmiRegistrarNovoUsuário.Text = "Registrar novo Usuário";
+            tsmiRegistrarNovoUsuário.Click += registrarNovoUsuárioToolStripMenuItem_Click;
+            // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { administraçãoToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { tsmiAdministracao, tsmiInformacoes, tsmiSobre });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(552, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
-            // administraçãoToolStripMenuItem
+            // tsmiInformacoes
             // 
-            administraçãoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { registrarNovoUsuárioToolStripMenuItem });
-            administraçãoToolStripMenuItem.Name = "administraçãoToolStripMenuItem";
-            administraçãoToolStripMenuItem.Size = new Size(96, 20);
-            administraçãoToolStripMenuItem.Text = "Administração";
+            tsmiInformacoes.Name = "tsmiInformacoes";
+            tsmiInformacoes.Size = new Size(88, 20);
+            tsmiInformacoes.Text = "Informações ";
             // 
-            // registrarNovoUsuárioToolStripMenuItem
+            // tsmiSobre
             // 
-            registrarNovoUsuárioToolStripMenuItem.Name = "registrarNovoUsuárioToolStripMenuItem";
-            registrarNovoUsuárioToolStripMenuItem.Size = new Size(193, 22);
-            registrarNovoUsuárioToolStripMenuItem.Text = "Registrar novo Usuário";
-            registrarNovoUsuárioToolStripMenuItem.Click += registrarNovoUsuárioToolStripMenuItem_Click;
+            tsmiSobre.Name = "tsmiSobre";
+            tsmiSobre.Size = new Size(49, 20);
+            tsmiSobre.Text = "Sobre";
+            tsmiSobre.Click += sobreToolStripMenuItem_Click;
             // 
             // Home
             // 
@@ -66,6 +82,12 @@ namespace ERPMSB.View
         {
             var resgistrarUsuarios = new RegistroUsers();
             resgistrarUsuarios.Show();
+        }
+
+        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var sobre = new Sobre();
+            sobre.Show();
         }
     }
 }
