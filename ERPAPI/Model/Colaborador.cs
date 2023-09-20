@@ -36,6 +36,7 @@ namespace ERPAPI.Model
     {
         public static partial ColaboradorDTO ColaboradorToColaboradorDTO(Colaborador colaborador);
         public static partial IQueryable<ColaboradorDTO> ProjectToDTO(this IQueryable<Colaborador> q);
+        public static partial List<ColaboradorDTO> ProjectToDTO(this List<Colaborador> q);
     }
 
 }

@@ -9,7 +9,7 @@ using System.Text;
 
 namespace ERPMSB
 {
-    public partial class TelaInicial : CustomForm
+    public partial class TelaInicial : Form
     {
         NameValueCollection appSettings = ConfigurationManager.AppSettings;
         public TelaInicial()
@@ -57,7 +57,7 @@ namespace ERPMSB
 
         private async void ButtonLogin_Click(object sender, EventArgs e)
         {
-            RealizarLogin(); 
+            RealizarLogin();
         }
 
         private bool ValidarCamposLoginSenha()

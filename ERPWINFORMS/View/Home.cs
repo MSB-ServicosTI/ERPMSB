@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace ERPMSB.View
 {
-    public partial class Home : CustomForm
+    public partial class Home : Form
     {
         public Home()
         {

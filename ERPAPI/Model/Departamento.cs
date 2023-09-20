@@ -23,5 +23,6 @@ namespace ERPAPI.Model
     {
         public static partial DepartamentoDTO DepartamentoToDepartamentoDTO(Departamento departamento);
         public static partial IQueryable<DepartamentoDTO> ProjectToDTO(this IQueryable<Departamento> q);
+        public static partial List<DepartamentoDTO> ProjectToDTO(this List<Departamento> q);
     }
 }

@@ -28,31 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            TreeNode treeNode1 = new TreeNode("Colaboradores");
-            TreeNode treeNode2 = new TreeNode("Departamentos");
+            components = new System.ComponentModel.Container();
+            TreeNode treeNode3 = new TreeNode("Colaboradores");
+            TreeNode treeNode4 = new TreeNode("Departamentos");
             tvColaboradores = new TreeView();
             tvDepartamentos = new TreeView();
+            cmsDepartamento = new ContextMenuStrip(components);
+            tsmiGerenciarDepartamento = new ToolStripMenuItem();
+            cmsDepartamento.SuspendLayout();
             SuspendLayout();
             // 
             // tvColaboradores
             // 
             tvColaboradores.Location = new Point(273, 12);
             tvColaboradores.Name = "tvColaboradores";
-            treeNode1.Name = "Colaboradores";
-            treeNode1.Text = "Colaboradores";
-            tvColaboradores.Nodes.AddRange(new TreeNode[] { treeNode1 });
+            treeNode3.Name = "Colaboradores";
+            treeNode3.Text = "Colaboradores";
+            tvColaboradores.Nodes.AddRange(new TreeNode[] { treeNode3 });
             tvColaboradores.Size = new Size(283, 426);
             tvColaboradores.TabIndex = 7;
+            tvColaboradores.BeforeSelect += tvColaboradores_BeforeSelect;
+            tvColaboradores.AfterSelect += tvColaboradores_AfterSelect;
             // 
             // tvDepartamentos
             // 
             tvDepartamentos.Location = new Point(562, 12);
             tvDepartamentos.Name = "tvDepartamentos";
-            treeNode2.Name = "Departamentos";
-            treeNode2.Text = "Departamentos";
-            tvDepartamentos.Nodes.AddRange(new TreeNode[] { treeNode2 });
+            treeNode4.Name = "Departamentos";
+            treeNode4.Text = "Departamentos";
+            tvDepartamentos.Nodes.AddRange(new TreeNode[] { treeNode4 });
             tvDepartamentos.Size = new Size(226, 426);
             tvDepartamentos.TabIndex = 8;
+            tvDepartamentos.AfterSelect += tvDepartamentos_AfterSelect;
+            tvDepartamentos.NodeMouseClick += tvDepartamentos_NodeMouseClick;
+            tvDepartamentos.MouseClick += tvDepartamentos_MouseClick;
+            // 
+            // cmsDepartamento
+            // 
+            cmsDepartamento.Items.AddRange(new ToolStripItem[] { tsmiGerenciarDepartamento });
+            cmsDepartamento.Name = "cmsDepartamento";
+            cmsDepartamento.Size = new Size(204, 48);
+            // 
+            // tsmiGerenciarDepartamento
+            // 
+            tsmiGerenciarDepartamento.Name = "tsmiGerenciarDepartamento";
+            tsmiGerenciarDepartamento.Size = new Size(203, 22);
+            tsmiGerenciarDepartamento.Text = "Gerenciar Departamento";
+            tsmiGerenciarDepartamento.Click += adicionarColaboraodrToolStripMenuItem_Click;
             // 
             // Atribuicoes
             // 
@@ -64,16 +86,14 @@
             Name = "Atribuicoes";
             Text = "Atribuicoes";
             Load += Atribuicoes_Load;
+            cmsDepartamento.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button button5;
         private TreeView tvColaboradores;
         private TreeView tvDepartamentos;
+        private ContextMenuStrip cmsDepartamento;
+        private ToolStripMenuItem tsmiGerenciarDepartamento;
     }
 }
