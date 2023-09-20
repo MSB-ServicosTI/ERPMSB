@@ -239,9 +239,6 @@
             Name = "RegistroUsers";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Registro de Usuários";
-            ((System.ComponentModel.ISupportInitialize)registerModelBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)colaboradorBindingSource).EndInit();
-            ResumeLayout(false);
             PerformLayout();
         }
 
