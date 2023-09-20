@@ -23,16 +23,11 @@ namespace ERPMSB.View
         private void InitializeComponent()
         {
             menuStrip1 = new MenuStrip();
-<<<<<<< HEAD
-            administraçãoToolStripMenuItem = new ToolStripMenuItem();
-            registrarNovoUsuárioToolStripMenuItem = new ToolStripMenuItem();
-            colaboradoresDepartamentosToolStripMenuItem = new ToolStripMenuItem();
-=======
             tsmiAdministracao = new ToolStripMenuItem();
             tsmiRegistrarNovoUsuario = new ToolStripMenuItem();
             tsmiColaboradoresDepartamentos = new ToolStripMenuItem();
+            tsmiColaboradoresDepartamentos = new ToolStripMenuItem();
             tsmiSobre = new ToolStripMenuItem();
->>>>>>> eb05a9c56cd46fd65c2c4005dc99f274b8719154
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -47,12 +42,6 @@ namespace ERPMSB.View
             // 
             // tsmiAdministracao
             // 
-<<<<<<< HEAD
-            administraçãoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { registrarNovoUsuárioToolStripMenuItem, colaboradoresDepartamentosToolStripMenuItem });
-            administraçãoToolStripMenuItem.Name = "administraçãoToolStripMenuItem";
-            administraçãoToolStripMenuItem.Size = new Size(96, 20);
-            administraçãoToolStripMenuItem.Text = "Administração";
-=======
             tsmiAdministracao.DropDownItems.AddRange(new ToolStripItem[] { tsmiRegistrarNovoUsuario, tsmiColaboradoresDepartamentos });
             tsmiAdministracao.Name = "tsmiAdministracao";
             tsmiAdministracao.Size = new Size(96, 20);
@@ -70,22 +59,14 @@ namespace ERPMSB.View
             tsmiColaboradoresDepartamentos.Name = "tsmiColaboradoresDepartamentos";
             tsmiColaboradoresDepartamentos.Size = new Size(243, 22);
             tsmiColaboradoresDepartamentos.Text = "Colaboradores / Departamentos";
-            tsmiColaboradoresDepartamentos.Click += colaboradoresDepartamentosToolStripMenuItem_Click;
->>>>>>> eb05a9c56cd46fd65c2c4005dc99f274b8719154
+            tsmiColaboradoresDepartamentos.Click += tsmiColaboradoresDepartamentos_Click;
             // 
             // tsmiSobre
             // 
-            registrarNovoUsuárioToolStripMenuItem.Name = "registrarNovoUsuárioToolStripMenuItem";
-            registrarNovoUsuárioToolStripMenuItem.Size = new Size(243, 22);
-            registrarNovoUsuárioToolStripMenuItem.Text = "Registrar novo Usuário";
-            registrarNovoUsuárioToolStripMenuItem.Click += registrarNovoUsuárioToolStripMenuItem_Click;
-            // 
-            // colaboradoresDepartamentosToolStripMenuItem
-            // 
-            colaboradoresDepartamentosToolStripMenuItem.Name = "colaboradoresDepartamentosToolStripMenuItem";
-            colaboradoresDepartamentosToolStripMenuItem.Size = new Size(243, 22);
-            colaboradoresDepartamentosToolStripMenuItem.Text = "Colaboradores / Departamentos";
-            colaboradoresDepartamentosToolStripMenuItem.Click += colaboradoresDepartamentosToolStripMenuItem_Click;
+            tsmiSobre.Name = "tsmiSobre";
+            tsmiSobre.Size = new Size(49, 20);
+            tsmiSobre.Text = "Sobre";
+            tsmiSobre.Click += tsmiSobre_Click;
             // 
             // Home
             // 
@@ -108,31 +89,20 @@ namespace ERPMSB.View
         }
 
         private void Home_Load(object sender, EventArgs e)
-<<<<<<< HEAD
         {
 
         }
 
-        private void colaboradoresDepartamentosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var atribuicoes = new Atribuicoes();
-            atribuicoes.Show();
-=======
-        {
-
-        }
-
-        private void colaboradoresDepartamentosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsmiColaboradoresDepartamentos_Click(object sender, EventArgs e)
         {
             var atribuicoes = new Atribuicoes();
             atribuicoes.Show();
         }
 
-        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsmiSobre_Click(object sender, EventArgs e)
         {
             var form = new Sobre();
             form.Show();
->>>>>>> eb05a9c56cd46fd65c2c4005dc99f274b8719154
         }
     }
 }
