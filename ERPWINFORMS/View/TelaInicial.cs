@@ -1,7 +1,10 @@
 using ERPAPI.Model;
+using ERPGarcia.View;
 using ERPMSB.Model;
 using ERPMSB.View;
 using Newtonsoft.Json;
+using System.Collections.Specialized;
+using System.Configuration;
 using System.Net.Http.Headers;
 using System.Text;
 
@@ -9,6 +12,7 @@ namespace ERPMSB
 {
     public partial class TelaInicial : Form
     {
+        NameValueCollection appSettings = ConfigurationManager.AppSettings;
         public TelaInicial()
         {
             InitializeComponent();
@@ -28,8 +32,7 @@ namespace ERPMSB
 
             HttpClient requestLogin = new()
             {
-                BaseAddress = new Uri("https://localhost:7239/"),
-
+                BaseAddress = new Uri(appSettings["Ip"]),
             };
 
             requestLogin.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -106,14 +109,10 @@ namespace ERPMSB
                 TxtBSenha.UseSystemPasswordChar = true;
         }
 
-        private void toolStripTextBox1_Click(object sender, EventArgs e)
+        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void Strip_Click(object sender, EventArgs e)
-        {
-
+            var form = new Sobre();
+            form.Show();
         }
     }
 }

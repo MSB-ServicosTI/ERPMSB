@@ -35,10 +35,9 @@
             CheckBoxShowPass = new CheckBox();
             LblLogin = new Label();
             LblSenha = new Label();
-            menuStrip1 = new MenuStrip();
-            Strip = new ToolStripMenuItem();
-            toolStripTextBox1 = new ToolStripTextBox();
-            menuStrip1.SuspendLayout();
+            menuStrip = new MenuStrip();
+            tsmiSobre = new ToolStripMenuItem();
+            menuStrip.SuspendLayout();
             SuspendLayout();
             // 
             // TxtBLogin
@@ -101,28 +100,21 @@
             LblSenha.TabIndex = 5;
             LblSenha.Text = "Senha:";
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { Strip });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(468, 24);
-            menuStrip1.TabIndex = 6;
-            menuStrip1.Text = "menuStrip1";
+            menuStrip.Items.AddRange(new ToolStripItem[] { tsmiSobre });
+            menuStrip.Location = new Point(0, 0);
+            menuStrip.Name = "menuStrip";
+            menuStrip.Size = new Size(468, 24);
+            menuStrip.TabIndex = 6;
+            menuStrip.Text = "menuStrip1";
             // 
-            // Strip
+            // tsmiSobre
             // 
-            Strip.DropDownItems.AddRange(new ToolStripItem[] { toolStripTextBox1 });
-            Strip.Name = "Strip";
-            Strip.Size = new Size(49, 20);
-            Strip.Text = "Sobre";
-            Strip.Click += Strip_Click;
-            // 
-            // toolStripTextBox1
-            // 
-            toolStripTextBox1.Name = "toolStripTextBox1";
-            toolStripTextBox1.Size = new Size(100, 23);
-            toolStripTextBox1.Click += toolStripTextBox1_Click;
+            tsmiSobre.Name = "tsmiSobre";
+            tsmiSobre.Size = new Size(49, 20);
+            tsmiSobre.Text = "Sobre";
+            tsmiSobre.Click += sobreToolStripMenuItem_Click;
             // 
             // TelaInicial
             // 
@@ -136,14 +128,14 @@
             Controls.Add(ButtonLogin);
             Controls.Add(TxtBSenha);
             Controls.Add(TxtBLogin);
-            Controls.Add(menuStrip1);
+            Controls.Add(menuStrip);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MainMenuStrip = menuStrip1;
+            MainMenuStrip = menuStrip;
             MinimumSize = new Size(484, 405);
             Name = "TelaInicial";
             StartPosition = FormStartPosition.CenterScreen;
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            menuStrip.ResumeLayout(false);
+            menuStrip.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -156,8 +148,7 @@
         private CheckBox CheckBoxShowPass;
         private Label LblLogin;
         private Label LblSenha;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem Strip;
-        private ToolStripTextBox toolStripTextBox1;
+        private MenuStrip menuStrip;
+        private ToolStripMenuItem tsmiSobre;
     }
 }
