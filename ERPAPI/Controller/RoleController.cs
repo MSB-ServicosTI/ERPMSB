@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ERPAPI.Model;
 using Newtonsoft.Json.Linq;
+using ERPAPI.Context;
 
 namespace ERPAPI.Controller
 {
@@ -13,12 +14,15 @@ namespace ERPAPI.Controller
     {
         private readonly RoleManager<Departamento> roleManager;
         private readonly UserManager<Colaborador> userManager;
+        private readonly AppDbContext appDbContext;
 
         public RoleController(RoleManager<Departamento> roleManager,
-                              UserManager<Colaborador> userManager)
+                              UserManager<Colaborador> userManager,
+                              AppDbContext appDbContext)
         {
             this.roleManager = roleManager;
             this.userManager = userManager;
+            this.appDbContext = appDbContext;
         }
 
         [HttpGet]
@@ -28,6 +32,22 @@ namespace ERPAPI.Controller
             var roles = roleManager.Roles;
             var rolesDTO = DepartamentoMapper.ProjectToDTO(roles);
             return Ok(await rolesDTO.ToListAsync());
+        }
+
+        [HttpGet]
+        [Route("getAllUsersFromRole/{id}")]
+        public async Task<IActionResult> GetAllusersFromRole(string id)
+        {
+            var roleUsers = await appDbContext.UserRoles.Where(a => a.RoleId == id).ToListAsync();
+            var users = new List<Colaborador>();
+
+            foreach (var user in roleUsers)
+            {
+                users.Add(await userManager.FindByIdAsync(user.UserId));
+            }
+
+            var usersDTO = ColaboradorMapper.ProjectToDTO(users);
+            return Ok(usersDTO);
         }
 
         [HttpPost]
@@ -72,11 +92,25 @@ namespace ERPAPI.Controller
         }
 
         [HttpPost]
+        [Route("removeFromRole")]
+        public async Task<IActionResult> RemoveFromRole([FromBody] RegisterModelUserToRole model)
+        {
+            var role = await roleManager.FindByIdAsync(model.DepartamentoId);
+            var user = await userManager.FindByIdAsync(model.ColaboradorId);
+            var result = await userManager.RemoveFromRoleAsync(user, role.Name);
+
+            if (result.Succeeded)
+                return Ok(new AuthenticationResponse { Status = AuthenticationStatus.Success, Message = $"{user.Nome} removido do departamento {role.Nome}" });
+
+            return BadRequest(new AuthenticationResponse { Status = AuthenticationStatus.InternalServerError, Message = result.Errors.FirstOrDefault().Description });
+        }
+
+        [HttpPost]
         [Route("addUser")]
         public async Task<IActionResult> AddUserToRole([FromBody] RegisterModelUserToRole model)
         {
             var role = await roleManager.FindByIdAsync(model.DepartamentoId);
-            var user = await userManager.FindByIdAsync(model.UserId);
+            var user = await userManager.FindByIdAsync(model.ColaboradorId);
 
             if (role != null && user != null)
             {

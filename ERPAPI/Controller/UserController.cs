@@ -17,14 +17,17 @@ namespace ERPAPI.Controller
     {
         private readonly UserManager<Colaborador> userManager;
         private readonly RoleManager<Departamento> roleManager;
+        private readonly AppDbContext appDbContext;
         private readonly IConfiguration configuration;
 
         public UserController(UserManager<Colaborador> userManager,
                               RoleManager<Departamento> roleManager,
+                              AppDbContext appDbContext,
                               IConfiguration configuration)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
+            this.appDbContext = appDbContext;
             this.configuration = configuration;
         }
 
@@ -83,6 +86,22 @@ namespace ERPAPI.Controller
             return Ok(await lstColaboradoresDTO.ToListAsync());
         }
 
+        [HttpGet]
+        [Route("getUserRoles/{id}")]
+        public async Task<IActionResult> GetUserRoles(string id)
+        {
+            var userRoles = await appDbContext.UserRoles.Where(a => a.UserId == id).ToListAsync();
+            var roles = new List<Departamento>();
+
+            foreach (var role in userRoles)
+            {
+                roles.Add(await roleManager.FindByIdAsync(role.RoleId));
+            }
+
+            var rolesDTO = DepartamentoMapper.ProjectToDTO(roles);
+            return Ok(rolesDTO);
+        }
+
         [HttpPost]
         [Route("register")]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
@@ -110,14 +129,14 @@ namespace ERPAPI.Controller
 
         [HttpPost]
         [Route("addDepartment")]
-        public async Task<IActionResult> AddDepartment(string DepartmentId, string UserId)
+        public async Task<IActionResult> AddDepartment([FromBody] RegisterModelUserToRole model)
         {
-            var departamento = await roleManager.FindByIdAsync(DepartmentId);
+            var departamento = await roleManager.FindByIdAsync(model.DepartamentoId);
 
             if (departamento == null)
                 return BadRequest(new AuthenticationResponse { Status = AuthenticationStatus.DepartmentNotFound, Message = "Não foi possível encontrar o departamento especificado." });
 
-            var user = await userManager.FindByIdAsync(UserId);
+            var user = await userManager.FindByIdAsync(model.ColaboradorId);
 
             if (user == null)
                 return BadRequest(new AuthenticationResponse { Status = AuthenticationStatus.UserNotFound, Message = "Usuário não encontrado." });
@@ -126,7 +145,13 @@ namespace ERPAPI.Controller
 
             if (userRoles.Any(a => a == departamento.Name))
                 return BadRequest(new AuthenticationResponse { Status = AuthenticationStatus.AlreadyExists, Message = $"O usuário já está no departamento {departamento.Name}" });
-            return (Ok($"Colaborador `{user.Nome}` adicionado ao departamento `{departamento.Name}`"));
+
+            var result = await userManager.AddToRoleAsync(user, departamento.Name);
+
+            if (!result.Succeeded)
+                return BadRequest(new AuthenticationResponse { Status = AuthenticationStatus.InternalServerError, Message = $"{result.Errors.FirstOrDefault()}" });
+
+            return (Ok(new AuthenticationResponse { Status = AuthenticationStatus.Success, Message = $"Colaborador `{user.Nome}` adicionado ao departamento `{departamento.Name}`" }));
         }
 
         private JwtSecurityToken GetToken(List<Claim> authClaims)
