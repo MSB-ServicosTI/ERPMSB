@@ -1,8 +1,10 @@
 ﻿using ERPMSB.Model;
 using ERPMSB.View;
+using ERPWINFORMS.Model;
 using Newtonsoft.Json;
 using System;
 using System.Net.Http.Headers;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -26,6 +28,9 @@ namespace ERPMSB.View
                 Username = inputUser.Text,
                 EmailAddress = inputEmail.Text,
                 Password = inputSenha.Text,
+                NomeColaborador = inputNomeColaborador.Text,
+                DataNascimento = dtpDataNascimento.Value,
+                TipoContrato = (TipoContrato)cbTipoContrato.SelectedIndex
             };
 
             HttpClient requestRegister = new()
@@ -45,6 +50,10 @@ namespace ERPMSB.View
                 inputEmail.Clear();
                 inputSenha.Clear();
                 inputConfSenha.Clear();
+                inputNomeColaborador.Clear();
+                dtpDataNascimento.ResetText();
+                cbTipoContrato.ResetText();
+                cbTipoContrato.SelectedIndex = -1;
             }
             else
             {
@@ -99,6 +108,11 @@ namespace ERPMSB.View
                 return false;
 
             return true;
+        }
+
+        private void cancelar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             cadastrar = new Button();
-            cancelar = new Button();
+            CancelBotton = new Button();
             Title = new Label();
             inputUser = new TextBox();
             inputEmail = new TextBox();
@@ -39,26 +39,31 @@
             labelEmail = new Label();
             labelSenha = new Label();
             labelConfSenha = new Label();
+            inputNomeColaborador = new TextBox();
+            LblNomeColaborador = new Label();
+            LblDataNascimento = new Label();
+            LblTipoContrato = new Label();
+            cbTipoContrato = new ComboBox();
+            dtpDataNascimento = new DateTimePicker();
             SuspendLayout();
             // 
             // cadastrar
             // 
-            cadastrar.Location = new Point(524, 367);
+            cadastrar.Location = new Point(12, 357);
             cadastrar.Name = "cadastrar";
             cadastrar.Size = new Size(75, 23);
-            cadastrar.TabIndex = 0;
+            cadastrar.TabIndex = 9;
             cadastrar.Text = "Cadastrar";
             cadastrar.UseVisualStyleBackColor = true;
-            cadastrar.Click += Cadastrar_Click;
             // 
-            // cancelar
+            // CancelBotton
             // 
-            cancelar.Location = new Point(443, 367);
-            cancelar.Name = "cancelar";
-            cancelar.Size = new Size(75, 23);
-            cancelar.TabIndex = 1;
-            cancelar.Text = "Cancelar";
-            cancelar.UseVisualStyleBackColor = true;
+            CancelBotton.Location = new Point(250, 357);
+            CancelBotton.Name = "CancelBotton";
+            CancelBotton.Size = new Size(75, 23);
+            CancelBotton.TabIndex = 10;
+            CancelBotton.Text = "Cancelar";
+            CancelBotton.UseVisualStyleBackColor = true;
             // 
             // Title
             // 
@@ -72,36 +77,36 @@
             // 
             // inputUser
             // 
-            inputUser.Location = new Point(12, 127);
+            inputUser.Location = new Point(11, 108);
             inputUser.Name = "inputUser";
-            inputUser.Size = new Size(437, 23);
-            inputUser.TabIndex = 3;
+            inputUser.Size = new Size(313, 23);
+            inputUser.TabIndex = 2;
             // 
             // inputEmail
             // 
-            inputEmail.Location = new Point(12, 174);
+            inputEmail.Location = new Point(12, 152);
             inputEmail.Name = "inputEmail";
-            inputEmail.Size = new Size(437, 23);
-            inputEmail.TabIndex = 4;
+            inputEmail.Size = new Size(313, 23);
+            inputEmail.TabIndex = 3;
             // 
             // inputSenha
             // 
-            inputSenha.Location = new Point(12, 220);
+            inputSenha.Location = new Point(11, 240);
             inputSenha.Name = "inputSenha";
-            inputSenha.Size = new Size(437, 23);
+            inputSenha.Size = new Size(313, 23);
             inputSenha.TabIndex = 5;
             // 
             // inputConfSenha
             // 
-            inputConfSenha.Location = new Point(12, 266);
+            inputConfSenha.Location = new Point(12, 284);
             inputConfSenha.Name = "inputConfSenha";
-            inputConfSenha.Size = new Size(437, 23);
+            inputConfSenha.Size = new Size(313, 23);
             inputConfSenha.TabIndex = 6;
             // 
             // labelUser
             // 
             labelUser.AutoSize = true;
-            labelUser.Location = new Point(12, 109);
+            labelUser.Location = new Point(11, 90);
             labelUser.Name = "labelUser";
             labelUser.Size = new Size(47, 15);
             labelUser.TabIndex = 7;
@@ -110,7 +115,7 @@
             // labelEmail
             // 
             labelEmail.AutoSize = true;
-            labelEmail.Location = new Point(12, 156);
+            labelEmail.Location = new Point(11, 134);
             labelEmail.Name = "labelEmail";
             labelEmail.Size = new Size(41, 15);
             labelEmail.TabIndex = 8;
@@ -119,7 +124,7 @@
             // labelSenha
             // 
             labelSenha.AutoSize = true;
-            labelSenha.Location = new Point(12, 202);
+            labelSenha.Location = new Point(12, 222);
             labelSenha.Name = "labelSenha";
             labelSenha.Size = new Size(39, 15);
             labelSenha.TabIndex = 9;
@@ -128,17 +133,75 @@
             // labelConfSenha
             // 
             labelConfSenha.AutoSize = true;
-            labelConfSenha.Location = new Point(12, 248);
+            labelConfSenha.Location = new Point(11, 266);
             labelConfSenha.Name = "labelConfSenha";
             labelConfSenha.Size = new Size(96, 15);
             labelConfSenha.TabIndex = 10;
             labelConfSenha.Text = "Confirmar Senha";
             // 
+            // inputNomeColaborador
+            // 
+            inputNomeColaborador.Location = new Point(12, 64);
+            inputNomeColaborador.Name = "inputNomeColaborador";
+            inputNomeColaborador.Size = new Size(313, 23);
+            inputNomeColaborador.TabIndex = 1;
+            // 
+            // LblNomeColaborador
+            // 
+            LblNomeColaborador.AutoSize = true;
+            LblNomeColaborador.Location = new Point(11, 46);
+            LblNomeColaborador.Name = "LblNomeColaborador";
+            LblNomeColaborador.Size = new Size(129, 15);
+            LblNomeColaborador.TabIndex = 12;
+            LblNomeColaborador.Text = "Nome do Colaborador ";
+            // 
+            // LblDataNascimento
+            // 
+            LblDataNascimento.AutoSize = true;
+            LblDataNascimento.Location = new Point(11, 178);
+            LblDataNascimento.Name = "LblDataNascimento";
+            LblDataNascimento.Size = new Size(120, 15);
+            LblDataNascimento.TabIndex = 14;
+            LblDataNascimento.Text = "Data de Nascimento  ";
+            // 
+            // LblTipoContrato
+            // 
+            LblTipoContrato.AutoSize = true;
+            LblTipoContrato.Location = new Point(12, 310);
+            LblTipoContrato.Name = "LblTipoContrato";
+            LblTipoContrato.Size = new Size(96, 15);
+            LblTipoContrato.TabIndex = 17;
+            LblTipoContrato.Text = "Tipo de Contrato";
+            // 
+            // cbTipoContrato
+            // 
+            cbTipoContrato.FormattingEnabled = true;
+            cbTipoContrato.Items.AddRange(new object[] { "PJ", "CLT", "COOPERATIVO" });
+            cbTipoContrato.Location = new Point(11, 328);
+            cbTipoContrato.Name = "cbTipoContrato";
+            cbTipoContrato.Size = new Size(314, 23);
+            cbTipoContrato.TabIndex = 7;
+            // 
+            // dtpDataNascimento
+            // 
+            dtpDataNascimento.Format = DateTimePickerFormat.Short;
+            dtpDataNascimento.Location = new Point(12, 196);
+            dtpDataNascimento.Name = "dtpDataNascimento";
+            dtpDataNascimento.Size = new Size(313, 23);
+            dtpDataNascimento.TabIndex = 4;
+            // 
             // RegistroUsers
             // 
+            AcceptButton = cadastrar;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(611, 393);
+            ClientSize = new Size(337, 392);
+            Controls.Add(dtpDataNascimento);
+            Controls.Add(cbTipoContrato);
+            Controls.Add(LblTipoContrato);
+            Controls.Add(LblDataNascimento);
+            Controls.Add(LblNomeColaborador);
+            Controls.Add(inputNomeColaborador);
             Controls.Add(labelConfSenha);
             Controls.Add(labelSenha);
             Controls.Add(labelEmail);
@@ -148,11 +211,10 @@
             Controls.Add(inputEmail);
             Controls.Add(inputUser);
             Controls.Add(Title);
-            Controls.Add(cancelar);
+            Controls.Add(CancelBotton);
             Controls.Add(cadastrar);
             Name = "RegistroUsers";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "RegistroUsers";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -160,7 +222,7 @@
         #endregion
 
         private Button cadastrar;
-        private Button cancelar;
+        private Button CancelBotton;
         private Label Title;
         private TextBox inputUser;
         private TextBox inputEmail;
@@ -170,5 +232,11 @@
         private Label labelEmail;
         private Label labelSenha;
         private Label labelConfSenha;
+        private TextBox inputNomeColaborador;
+        private Label LblNomeColaborador;
+        private Label LblDataNascimento;
+        private Label LblTipoContrato;
+        private ComboBox cbTipoContrato;
+        private DateTimePicker dtpDataNascimento;
     }
 }
