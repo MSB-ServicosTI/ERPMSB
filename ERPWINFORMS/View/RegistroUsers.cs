@@ -109,12 +109,6 @@ namespace ERPMSB.View
 
             return true;
         }
-
-        private void cancelar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void CancelBotton_Click(object sender, EventArgs e)
         {
             this.Close();
