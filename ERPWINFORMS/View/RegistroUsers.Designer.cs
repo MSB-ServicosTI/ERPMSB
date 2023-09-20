@@ -64,12 +64,13 @@
             CancelBotton.TabIndex = 10;
             CancelBotton.Text = "Cancelar";
             CancelBotton.UseVisualStyleBackColor = true;
+            CancelBotton.Click += CancelBotton_Click;
             // 
             // Title
             // 
             Title.AutoSize = true;
             Title.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            Title.Location = new Point(0, 9);
+            Title.Location = new Point(37, 9);
             Title.Name = "Title";
             Title.Size = new Size(260, 37);
             Title.TabIndex = 2;
@@ -195,6 +196,7 @@
             AcceptButton = cadastrar;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = CancelBotton;
             ClientSize = new Size(337, 392);
             Controls.Add(dtpDataNascimento);
             Controls.Add(cbTipoContrato);
