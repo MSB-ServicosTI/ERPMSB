@@ -1,4 +1,5 @@
 using ERPAPI.Model;
+using ERPGarcia.View;
 using ERPMSB.Model;
 using ERPMSB.View;
 using Newtonsoft.Json;
@@ -106,6 +107,12 @@ namespace ERPMSB
                 TxtBSenha.UseSystemPasswordChar = false;
             else
                 TxtBSenha.UseSystemPasswordChar = true;
+        }
+
+        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new Sobre();
+            form.Show();
         }
     }
 }

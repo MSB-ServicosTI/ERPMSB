@@ -35,6 +35,9 @@
             CheckBoxShowPass = new CheckBox();
             LblLogin = new Label();
             LblSenha = new Label();
+            menuStrip = new MenuStrip();
+            tsmiSobre = new ToolStripMenuItem();
+            menuStrip.SuspendLayout();
             SuspendLayout();
             // 
             // TxtBLogin
@@ -97,6 +100,22 @@
             LblSenha.TabIndex = 5;
             LblSenha.Text = "Senha:";
             // 
+            // menuStrip
+            // 
+            menuStrip.Items.AddRange(new ToolStripItem[] { tsmiSobre });
+            menuStrip.Location = new Point(0, 0);
+            menuStrip.Name = "menuStrip";
+            menuStrip.Size = new Size(468, 24);
+            menuStrip.TabIndex = 6;
+            menuStrip.Text = "menuStrip1";
+            // 
+            // tsmiSobre
+            // 
+            tsmiSobre.Name = "tsmiSobre";
+            tsmiSobre.Size = new Size(49, 20);
+            tsmiSobre.Text = "Sobre";
+            tsmiSobre.Click += sobreToolStripMenuItem_Click;
+            // 
             // TelaInicial
             // 
             AcceptButton = ButtonLogin;
@@ -109,10 +128,14 @@
             Controls.Add(ButtonLogin);
             Controls.Add(TxtBSenha);
             Controls.Add(TxtBLogin);
+            Controls.Add(menuStrip);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MainMenuStrip = menuStrip;
             MinimumSize = new Size(484, 405);
             Name = "TelaInicial";
             StartPosition = FormStartPosition.CenterScreen;
+            menuStrip.ResumeLayout(false);
+            menuStrip.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -125,5 +148,7 @@
         private CheckBox CheckBoxShowPass;
         private Label LblLogin;
         private Label LblSenha;
+        private MenuStrip menuStrip;
+        private ToolStripMenuItem tsmiSobre;
     }
 }

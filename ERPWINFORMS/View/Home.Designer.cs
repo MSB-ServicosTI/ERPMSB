@@ -21,8 +21,9 @@
         }
 
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem administraçãoToolStripMenuItem;
-        private ToolStripMenuItem registrarNovoUsuárioToolStripMenuItem;
-        private ToolStripMenuItem colaboradoresDepartamentosToolStripMenuItem;
+        private ToolStripMenuItem tsmiAdministracao;
+        private ToolStripMenuItem tsmiRegistrarNovoUsuario;
+        private ToolStripMenuItem tsmiColaboradoresDepartamentos;
+        private ToolStripMenuItem tsmiSobre;
     }
 }
