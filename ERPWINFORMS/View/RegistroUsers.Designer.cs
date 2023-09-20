@@ -64,7 +64,7 @@
             // 
             // cancelar
             // 
-            cancelar.Location = new Point(247, 381);
+            cancelar.Location = new Point(248, 382);
             cancelar.Name = "cancelar";
             cancelar.Size = new Size(75, 23);
             cancelar.TabIndex = 9;
@@ -247,23 +247,24 @@
 
         #endregion
 
-        private Button cadastrar;
-        private Button cancelar;
+
         private Label Title;
-        private TextBox inputUser;
-        private TextBox inputEmail;
-        private TextBox inputSenha;
-        private TextBox inputConfSenha;
-        private Label lblUser;
-        private Label lblEmail;
-        private Label lblSenha;
-        private Label lblConfSenha;
-        private TextBox inputNomeColaborador;
         private Label lblNomeColaborador;
+        private TextBox inputNomeColaborador;
+        private Label lblEmail;
+        private TextBox inputEmail;
+        private Label lblUser;
+        private TextBox inputUser;
+        private Label lblSenha;
+        private TextBox inputSenha;
+        private Label lblConfSenha;
+        private TextBox inputConfSenha;
         private Label lblDataNascimento;
         private DateTimePicker dtpDataNascimento;
-        private ComboBox cbxTipoContrato;
         private Label lblTipoContrato;
+        private ComboBox cbxTipoContrato;
+        private Button cadastrar;
+        private Button cancelar;
         private BindingSource registerModelBindingSource;
         private BindingSource colaboradorBindingSource;
     }
