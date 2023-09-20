@@ -36,7 +36,12 @@ namespace ERPMSB
 
             StringContent content = new StringContent(JsonConvert.SerializeObject(loginModel), Encoding.UTF8, "application/json");
 
+            ButtonLogin.Enabled = false;
+
             HttpResponseMessage response = await requestLogin.PostAsync("api/User/login", content);
+
+            ButtonLogin.Enabled = true;
+
             if (response.IsSuccessStatusCode)
             {
                 string data = await response.Content.ReadAsStringAsync();
@@ -55,7 +60,7 @@ namespace ERPMSB
 
         private async void ButtonLogin_Click(object sender, EventArgs e)
         {
-            RealizarLogin(); 
+            RealizarLogin();
         }
 
         private bool ValidarCamposLoginSenha()
