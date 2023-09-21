@@ -1,5 +1,6 @@
 ﻿using ERPGarcia.View;
 using ERPMSB.Model;
+using ERPWINFORMS.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -57,6 +58,7 @@ namespace ERPMSB.View
             tsmiInformacoes.Name = "tsmiInformacoes";
             tsmiInformacoes.Size = new Size(88, 20);
             tsmiInformacoes.Text = "Informações ";
+            tsmiInformacoes.Click += tsmiInformacoes_Click;
             // 
             // tsmiSobre
             // 
@@ -88,6 +90,12 @@ namespace ERPMSB.View
         {
             var sobre = new Sobre();
             sobre.Show();
+        }
+
+        private void tsmiInformacoes_Click(object sender, EventArgs e)
+        {
+            var contato = new Contato();
+            contato.Show();
         }
     }
 }
