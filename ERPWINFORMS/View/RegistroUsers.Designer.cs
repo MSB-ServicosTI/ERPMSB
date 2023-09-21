@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            cadastrar = new Button();
-            cancelar = new Button();
+            btnCadastrar = new Button();
+            btnCancelar = new Button();
             Title = new Label();
             inputUser = new TextBox();
             inputEmail = new TextBox();
@@ -52,25 +52,25 @@
             ((System.ComponentModel.ISupportInitialize)colaboradorBindingSource).BeginInit();
             SuspendLayout();
             // 
-            // cadastrar
+            // btnCadastrar
             // 
-            cadastrar.Location = new Point(118, 382);
-            cadastrar.Name = "cadastrar";
-            cadastrar.Size = new Size(75, 23);
-            cadastrar.TabIndex = 8;
-            cadastrar.Text = "Cadastrar";
-            cadastrar.UseVisualStyleBackColor = true;
-            cadastrar.Click += Cadastrar_Click;
+            btnCadastrar.Location = new Point(118, 382);
+            btnCadastrar.Name = "btnCadastrar";
+            btnCadastrar.Size = new Size(75, 23);
+            btnCadastrar.TabIndex = 8;
+            btnCadastrar.Text = "Cadastrar";
+            btnCadastrar.UseVisualStyleBackColor = true;
+            btnCadastrar.Click += Cadastrar_Click;
             // 
-            // cancelar
+            // btnCancelar
             // 
-            cancelar.Location = new Point(248, 382);
-            cancelar.Name = "cancelar";
-            cancelar.Size = new Size(75, 23);
-            cancelar.TabIndex = 9;
-            cancelar.Text = "Cancelar";
-            cancelar.UseVisualStyleBackColor = true;
-            cancelar.Click += cancelar_Click;
+            btnCancelar.Location = new Point(248, 382);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(75, 23);
+            btnCancelar.TabIndex = 9;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += cancelar_Click;
             // 
             // Title
             // 
@@ -214,10 +214,10 @@
             // 
             // RegistroUsers
             // 
-            AcceptButton = cadastrar;
+            AcceptButton = btnCadastrar;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            CancelButton = cancelar;
+            CancelButton = btnCancelar;
             ClientSize = new Size(456, 433);
             Controls.Add(lblTipoContrato);
             Controls.Add(cbxTipoContrato);
@@ -234,11 +234,14 @@
             Controls.Add(inputEmail);
             Controls.Add(inputUser);
             Controls.Add(Title);
-            Controls.Add(cancelar);
-            Controls.Add(cadastrar);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnCadastrar);
             Name = "RegistroUsers";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Registro de Usuários";
+            ((System.ComponentModel.ISupportInitialize)registerModelBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)colaboradorBindingSource).EndInit();
+            ResumeLayout(false);
             PerformLayout();
         }
 
@@ -260,8 +263,8 @@
         private DateTimePicker dtpDataNascimento;
         private Label lblTipoContrato;
         private ComboBox cbxTipoContrato;
-        private Button cadastrar;
-        private Button cancelar;
+        private Button btnCadastrar;
+        private Button btnCancelar;
         private BindingSource registerModelBindingSource;
         private BindingSource colaboradorBindingSource;
     }
