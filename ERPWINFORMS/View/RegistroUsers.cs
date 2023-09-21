@@ -1,7 +1,10 @@
 ﻿using ERPMSB.Model;
 using ERPMSB.View;
+using ERPWINFORMS.Services;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Specialized;
+using System.Configuration;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -11,6 +14,7 @@ namespace ERPMSB.View
 {
     public partial class RegistroUsers : Form
     {
+        static NameValueCollection appSettings = ConfigurationManager.AppSettings;
         public RegistroUsers()
         {
             InitializeComponent();
@@ -33,7 +37,7 @@ namespace ERPMSB.View
 
             HttpClient requestRegister = new()
             {
-                BaseAddress = new Uri("https://localhost:7239/"),
+                BaseAddress = new Uri(appSettings["Ip"]),
             };
 
             requestRegister.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -43,6 +47,7 @@ namespace ERPMSB.View
             if (response.IsSuccessStatusCode)
             {
                 string data = await response.Content.ReadAsStringAsync();
+                EmailService.EnviarEmail(registerModel);
                 MessageBox.Show($"Usuário {registerModel.Username} criado com sucesso");
                 inputNomeColaborador.Clear();
                 inputEmail.Clear();
@@ -67,7 +72,7 @@ namespace ERPMSB.View
                 return false;
             }
 
-            bool verificarEmail = Regex.IsMatch(inputEmail.Text, @"^[A-Za-z0-9.-]+@[A-Za-z0-9.]+\.[A-Za-z]{2,}$");
+            bool verificarEmail = Regex.IsMatch(inputEmail.Text, @"^[A-Za-z0-9.-_]+@[A-Za-z0-9.]+\.[A-Za-z]{2,}$");
             if (!verificarEmail)
             {
                 MessageBox.Show("E-mail Inválido.");
