@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ERPMSB.Model
+namespace ERPCommon.Model
 {
     public class LoginModel
     {

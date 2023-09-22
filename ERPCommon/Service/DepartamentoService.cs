@@ -1,5 +1,4 @@
-﻿using ERPWINFORMS.Model;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -8,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ERPWINFORMS.Services
+namespace ERPCommon.Service
 {
     public static class DepartamentoService
     {

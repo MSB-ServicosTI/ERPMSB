@@ -1,6 +1,5 @@
-﻿using ERPWINFORMS.Model;
-using static ERPWINFORMS.Services.ColaboradorService;
-using static ERPWINFORMS.Services.DepartamentoService;
+﻿using static ERPCommon.Service.ColaboradorService;
+using static ERPCommon.Service.DepartamentoService;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,6 +12,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ERPCommon;
+using ERPCommon.Model;
 
 namespace ERPWINFORMS.View
 {
@@ -70,7 +71,7 @@ namespace ERPWINFORMS.View
         private async void btnAdicionar_Click(object sender, EventArgs e)
         {
             var result = await addDepartmento(colaboradorSelecionado.Id, departamento.Id);
-            if (!(result.Status == ERPAPI.Model.AuthenticationStatus.Success))
+            if (!(result.Status == AuthenticationStatus.Success))
             {
                 MessageBox.Show(result.Message);
                 return;
@@ -82,7 +83,7 @@ namespace ERPWINFORMS.View
         private async void btnRemover_Click(object sender, EventArgs e)
         {
             var result = await removeFromDepartmento(colaboradorSelecionado.Id, departamento.Id);
-            if (!(result.Status == ERPAPI.Model.AuthenticationStatus.Success))
+            if (!(result.Status == AuthenticationStatus.Success))
             {
                 MessageBox.Show(result.Message);
                 return;

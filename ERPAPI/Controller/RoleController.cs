@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using ERPAPI.Model;
 using Newtonsoft.Json.Linq;
 using ERPAPI.Context;
+using ERPCommon.Model;
+using ERPCommon;
 
 namespace ERPAPI.Controller
 {

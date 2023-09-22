@@ -7,10 +7,11 @@ using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
+using System.Configuration;
+using System.Reflection;
 
-namespace ERPWINFORMS.Services
+namespace ERPCommon
 {
     public static class EmailService
     {
@@ -35,14 +36,20 @@ namespace ERPWINFORMS.Services
                 </body>
             </html>");
             mail.IsBodyHtml = true;
-            try
-            {
-                smtpClient.Send(mail);
+            await smtpClient.SendMailAsync(mail);
             }
-            catch (Exception ex)
+
+        public async static void EnviarEmailCodigoSenha(ColaboradorDTO model, Guid codigoSenha)
             {
-                MessageBox.Show(ex.Message);
-            }
+            MailMessage mail = new MailMessage(AppSettingsProvider.AppSettings["Emailuser"], model.Email, "Código para recuperação de senha. ERP - MSB!",
+            @$"<html>
+                <body>
+                    <p>Olá {model.Nome}, aqui está seu código para recuperação de senha!</p>
+                        {codigoSenha}</br>
+                </body>
+            </html>");
+            mail.IsBodyHtml = true;
+            await smtpClient.SendMailAsync(mail);
         }
     }
 }

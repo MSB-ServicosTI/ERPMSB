@@ -1,4 +1,4 @@
-﻿using ERPMSB.Model;
+﻿using ERPCommon;
 using ERPMSB.View;
 using ERPWINFORMS.Services;
 using Newtonsoft.Json;
@@ -32,12 +32,12 @@ namespace ERPMSB.View
                 Username = inputUser.Text,
                 Password = inputSenha.Text,
                 DataNascimento = dtpDataNascimento.Value,
-                TipoContrato = (ERPWINFORMS.Model.TipoContrato)cbxTipoContrato.SelectedIndex
+                TipoContrato = (TipoContrato)cbxTipoContrato.SelectedIndex
             };
 
             HttpClient requestRegister = new()
             {
-                BaseAddress = new Uri(appSettings["Ip"]),
+                BaseAddress = new Uri(AppSettingsProvider.AppSettings["Ip"]),
             };
 
             requestRegister.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
