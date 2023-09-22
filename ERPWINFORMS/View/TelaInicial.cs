@@ -1,6 +1,6 @@
-using ERPAPI.Model;
+using ERPCommon;
+using ERPCommon.Model;
 using ERPGarcia.View;
-using ERPMSB.Model;
 using ERPMSB.View;
 using Newtonsoft.Json;
 using System.Collections.Specialized;
@@ -12,7 +12,6 @@ namespace ERPMSB
 {
     public partial class TelaInicial : Form
     {
-        NameValueCollection appSettings = ConfigurationManager.AppSettings;
         public TelaInicial()
         {
             InitializeComponent();
@@ -32,18 +31,18 @@ namespace ERPMSB
 
             HttpClient requestLogin = new()
             {
-                BaseAddress = new Uri(appSettings["Ip"]),
+                BaseAddress = new Uri(AppSettingsProvider.AppSettings["Ip"]),
             };
 
             requestLogin.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             StringContent content = new StringContent(JsonConvert.SerializeObject(loginModel), Encoding.UTF8, "application/json");
 
-            ButtonLogin.Enabled = false;
+            btnLogin.Enabled = false;
 
             HttpResponseMessage response = await requestLogin.PostAsync("api/User/login", content);
 
-            ButtonLogin.Enabled = true;
+            btnLogin.Enabled = true;
 
             if (response.IsSuccessStatusCode)
             {

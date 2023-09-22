@@ -1,6 +1,5 @@
-﻿using ERPMSB.Model;
+﻿using ERPCommon;
 using ERPMSB.View;
-using ERPWINFORMS.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Specialized;
@@ -14,7 +13,6 @@ namespace ERPMSB.View
 {
     public partial class RegistroUsers : Form
     {
-        static NameValueCollection appSettings = ConfigurationManager.AppSettings;
         public RegistroUsers()
         {
             InitializeComponent();
@@ -32,12 +30,12 @@ namespace ERPMSB.View
                 Username = inputUser.Text,
                 Password = inputSenha.Text,
                 DataNascimento = dtpDataNascimento.Value,
-                TipoContrato = (ERPWINFORMS.Model.TipoContrato)cbxTipoContrato.SelectedIndex
+                TipoContrato = (TipoContrato)cbxTipoContrato.SelectedIndex
             };
 
             HttpClient requestRegister = new()
             {
-                BaseAddress = new Uri(appSettings["Ip"]),
+                BaseAddress = new Uri(AppSettingsProvider.AppSettings["Ip"]),
             };
 
             requestRegister.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));

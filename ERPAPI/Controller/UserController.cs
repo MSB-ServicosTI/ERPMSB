@@ -1,8 +1,11 @@
 ﻿using ERPAPI.Context;
 using ERPAPI.Model;
+using ERPCommon;
+using ERPCommon.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -63,6 +66,66 @@ namespace ERPAPI.Controller
             var token = GetToken(authClaims);
 
             return Ok("Sucesso!");
+        }
+
+        [HttpPost]
+        [Route("/requestNewPassCode")]
+        public async Task<IActionResult> RequestNewPassCode([FromBody] ColaboradorUserEmail userEmail)
+        {
+            if (userEmail.Username == null && userEmail.Email == null)
+                return BadRequest(new AuthenticationResponse() { Status = AuthenticationStatus.InternalServerError, Message = "Username ou E-mail precisa ser preenchido." });
+
+            if (userEmail.Username != null)
+            {
+                var user = await userManager.FindByNameAsync(userEmail.Username);
+                if (user == null)
+                    return BadRequest(new AuthenticationResponse() { Status = AuthenticationStatus.UserNotFound, Message = "Usuário não encontrado." });
+
+                await CriarCodigoEnviarEmail(user);
+                return Ok(new AuthenticationResponse() { Status = AuthenticationStatus.Success, Message = "Código enviado para o e-mail do usuário." });
+            }
+
+            if (userEmail.Email != null)
+            {
+                var user = await userManager.FindByEmailAsync(userEmail.Email);
+                if (userEmail.Email == null)
+                    return BadRequest(new AuthenticationResponse() { Status = AuthenticationStatus.UserNotFound, Message = "Email não encontrado." });
+
+                await CriarCodigoEnviarEmail(user);
+                return Ok(new AuthenticationResponse() { Status = AuthenticationStatus.Success, Message = "Código enviado para o e-mail do usuário." });
+            }
+
+            return BadRequest(new AuthenticationResponse() { Status = AuthenticationStatus.InternalServerError, Message = "Falha interna." });
+        }
+
+        private async Task CriarCodigoEnviarEmail(Colaborador? user)
+        {
+            var esqueciSenha = new EsqueciMinhaSenha()
+            {
+                ColaboradorId = user.Id,
+                CodigoConfirmacao = new Guid(),
+                JaUtilizado = false
+            };
+
+            appDbContext.EsqueciMinhaSenha.Add(esqueciSenha);
+            await appDbContext.SaveChangesAsync();
+
+            ERPCommon.EmailService.EnviarEmailCodigoSenha(ColaboradorMapper.ColaboradorToColaboradorDTO(user), esqueciSenha.CodigoConfirmacao);
+        }
+
+        [HttpPost]
+        [Route("/forgotPass")]
+        public async Task<IActionResult> ConfirmUserPassword([FromBody] Guid cod)
+        {
+            var getPedidoSenha = await appDbContext.EsqueciMinhaSenha.FirstOrDefaultAsync(a => (a.CodigoConfirmacao == cod) && a.JaUtilizado == false);
+            if (getPedidoSenha == null)
+                return BadRequest(new AuthenticationResponse() { Status = AuthenticationStatus.UserNotFound, Message = "Código inválido." });
+            if (getPedidoSenha.JaUtilizado == true)
+                return BadRequest(new AuthenticationResponse() { Status = AuthenticationStatus.AlreadyExists, Message = "Código já utilizado anteriormente." });
+
+            getPedidoSenha.JaUtilizado = true;
+            await appDbContext.SaveChangesAsync();
+            return Ok(new AuthenticationResponse() { Status = AuthenticationStatus.Success, Message = "Código válido, já é possível prosseguir." });
         }
 
         [HttpGet]

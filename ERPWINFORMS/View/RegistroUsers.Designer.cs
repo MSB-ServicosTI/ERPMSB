@@ -1,4 +1,6 @@
-﻿namespace ERPMSB.View
+﻿using ERPCommon;
+
+namespace ERPMSB.View
 {
     partial class RegistroUsers
     {
@@ -206,11 +208,7 @@
             // 
             // registerModelBindingSource
             // 
-            registerModelBindingSource.DataSource = typeof(Model.RegisterModel);
-            // 
-            // colaboradorBindingSource
-            // 
-            colaboradorBindingSource.DataSource = typeof(ERPWINFORMS.Model.Colaborador);
+            registerModelBindingSource.DataSource = typeof(RegisterModel);
             // 
             // RegistroUsers
             // 
