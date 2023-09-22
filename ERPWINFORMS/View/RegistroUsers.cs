@@ -1,5 +1,6 @@
 ﻿using ERPCommon;
 using ERPMSB.View;
+using ERPWINFORMS.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Specialized;
@@ -13,6 +14,7 @@ namespace ERPMSB.View
 {
     public partial class RegistroUsers : Form
     {
+        static NameValueCollection appSettings = ConfigurationManager.AppSettings;
         public RegistroUsers()
         {
             InitializeComponent();

@@ -1,4 +1,11 @@
-﻿using System.Collections.Specialized;
+﻿using ERPMSB.Model;
+using ERPWINFORMS.Model;
+using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Configuration;
+using System.Linq;
+using System.Net;
 using System.Net.Mail;
 using System.Net;
 using System.Configuration;
@@ -30,10 +37,10 @@ namespace ERPCommon
             </html>");
             mail.IsBodyHtml = true;
             await smtpClient.SendMailAsync(mail);
-        }
+            }
 
         public async static void EnviarEmailCodigoSenha(ColaboradorDTO model, Guid codigoSenha)
-        {
+            {
             MailMessage mail = new MailMessage(AppSettingsProvider.AppSettings["Emailuser"], model.Email, "Código para recuperação de senha. ERP - MSB!",
             @$"<html>
                 <body>
